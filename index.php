@@ -91,12 +91,23 @@
             
             ?>
 
+            <?php
+                $query9 = "SELECT SUM(protein),SUM(fat),SUM(carbs),SUM(calories) FROM meal WHERE date='$currentDate'";
 
-            
+                $sql9 = mysqli_query($connection, $query9);
 
+                $row9 = mysqli_fetch_array($sql9);
 
+                echo "<p>Total Calories " . $row9[3] . "</p>";
 
+            ?>
+
+            <div class="pieChart">
+                <canvas id="myChart"></canvas>
+            </div>
+        
         </div>
+
         <div class="cardThree">
             <h2>Upcoming Bookings</h2>
         </div>
@@ -255,7 +266,30 @@
             ?>
         </div>
     </div>
-    
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+type: 'pie',
+data: {
+    labels: ['Protein', 'Fats','Carbs'],
+    datasets: [{
+    label: 'grams (g)',
+    data: [<?php echo $row9[0] ?>,<?php echo $row9[1] ?>,<?php echo $row9[2] ?>],
+    borderWidth: 1
+    }]
+},
+options: {
+    scales: {
+    y: {
+        beginAtZero: true
+    }
+    }
+}
+});
+    </script>
 
 </body>
 </html>
