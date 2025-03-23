@@ -35,26 +35,32 @@
 <h1>Nutrition</h1>
 <p>Add a meal for the day.</p>
 
+<div class="container">
 <form action="nutritionResult.php" method="POST">
 
-    <div class="carbs">
-        <label for="carbs">Total Carbs:</label>
-        <input type="number" id="carbs" name="carbs" step="1" min="0">
+    <label for="carbs" class="form-label">Total Carbs:</label>
+    <div class="input-group">
+        <div class="input-group-text">Grams</div>
+        <input type="number" id="carbs" name="carbs" step="1" min="0" class="form-control">
     </div>
 
-    <div class="fats">
-        <label for="fats">Total Fats:</label>
-        <input type="number" id="fats" name="fats" step="1" min="0">
+    <label for="fats" class="form-label">Total Fats:</label>
+    <div class="input-group">
+        <div class="input-group-text">Grams</div>
+        <input type="number" id="fats" name="fats" step="1" min="0" class="form-control">
     </div>
 
-    <div class="protein">
-        <label for="protein">Total Protein:</label>
-        <input type="number" id="protein" name="protein" step="1" min="0">
+    <label for="protein" class="form-label">Total Protein:</label>
+    <div class="input-group">
+        <div class="input-group-text">Grams</div>
+        <input type="number" id="protein" name="protein" step="1" min="0" class="form-control">
     </div>
 
     <input type="submit" label="Submit Meal Entry">
 
 </form>
+
+</div>
 
     
 

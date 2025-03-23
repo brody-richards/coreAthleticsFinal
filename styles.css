@@ -7,6 +7,11 @@
     background-color: #fdf9f0;
 } */
 
+body {
+    max-width: 80ch;
+    margin: 0 auto;
+}
+
 .dashboardCard {
     background-color: #f9f9f9;
     border: 2px solid black;
@@ -53,5 +58,4 @@
     width: 20rem;
     height: auto;
 }
-
 

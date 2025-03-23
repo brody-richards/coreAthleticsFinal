@@ -34,12 +34,12 @@
 <h1>Fitness</h1>
 <p>Add Your Daily Workout</p>
 
-<div class="addWorkoutForm">
+<div class="container">
     <form action="fitnessResult.php" method="POST">
         
         <div class="strengthWorkout">
-            <label for="stengthType">Select a Stength workout:</label>
-                <select name="strengthType" id="strengthType" required>
+            <label for="stengthType" class="form-label">Select a Stength workout:</label>
+                <select name="strengthType" id="strengthType" class="form-select">
                 <option value="" disabled selected>Select a workout:</option>
 
                 <?php 
@@ -57,13 +57,13 @@
         </div>
 
         <div class="strengthTime">
-            <label for="strengthTime">Add Estimated Strength Workout Time:</label>
-            <input type="number" name="strengthTime" id="strengthTime" step="1" min="0">
+            <label for="strengthTime" class="form-label">Add Estimated Strength Workout Time:</label>
+            <input type="number" name="strengthTime" id="strengthTime" step="1" min="0" class="form-control">
         </div>
 
         <div class="cardioWorkout">
-            <label for="cardioType">Select a Cardio workout:</label>
-                <select name="cardioType" id="cardioType" required>
+            <label for="cardioType" class="form-label">Select a Cardio workout:</label>
+                <select name="cardioType" id="cardioType" class="form-select">
                 <option value="" disabled selected>Select a workout:</option>
 
                 <?php 
@@ -81,8 +81,8 @@
         </div>
 
         <div class="cardioTime">
-            <label for="cardioTime">Add Estimated Cardio Workout Time:</label>
-            <input type="number" name="cardioTime" id="cardioTime" step="1" min="0">
+            <label for="cardioTime" class="form-label">Add Estimated Cardio Workout Time:</label>
+            <input type="number" name="cardioTime" id="cardioTime" step="1" min="0" class="form-control">
         </div>
 
         <input type="submit" value="Submit Workout Entry">

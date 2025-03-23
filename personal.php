@@ -34,31 +34,33 @@
 <h1>Personal</h1>
 <p>Update Your Personal Information</p>
 
-<div class="peronalForm">
+<div class="container">
     <form action="personalResult.php" method="POST">
 
-    <div class="calorieGoal">
-        <label for="calorieGoal">Change Daily Calorie Goal:</label>
-        <input type="number" id="calorieGoal" name="calorieGoal" step="1" min="0">
-        <?php echo "<p>Current Calorie Goal: " . $_COOKIE['calorieGoal'] ." cal/day</p>"?>
-        </div>
+    <label for="calorieGoal" class="form-label">Change Daily Calorie Goal:</label>
+    <div class="input-group">
+        <div class="input-group-text">Calories</div>
+        <input type="number" id="calorieGoal" name="calorieGoal" step="1" min="0" class="form-control">
     </div>
+    <?php echo "<p>Current Calorie Goal: " . $_COOKIE['calorieGoal'] ." cal/day</p>";?>
 
-    <div class="currentWeight">
-        <label for="currentWeight">Set Your Current Weight:</label>
-        <input type="number" id="currentWeight" name="currentWeight" step="1" min="0">
-        <?php echo "<p>Current Set Weight: " . $_COOKIE['currentWeight'] ."lbs</p>"?>
+    <label for="currentWeight" class="form-label">Set Your Current Weight:</label>
+    <div class="input-group">
+        <div class="input-group-text">lbs</div>
+        <input type="number" id="currentWeight" name="currentWeight" step="1" min="0" class="form-control">
     </div>
+    <?php echo "<p>Current Set Weight: " . $_COOKIE['currentWeight'] ."lbs</p>"?>
 
-    <div class="goalWeight">
-        <label for="goalWeight">Set Your Goal Weight:</label>
-        <input type="number" id="goalWeight" name="goalWeight" step="1" min="0">
-        <?php echo "<p>Current Goal Weight: " . $_COOKIE['goalWeight'] ."lbs</p>"?>
-        </div>
+    <label for="currentWeight" class="form-label">Set Your Goal Weight:</label>
+    <div class="input-group">
+        <div class="input-group-text">lbs</div>
+        <input type="number" id="goalWeight" name="goalWeight" step="1" min="0" class="form-control">
     </div>
+    <?php echo "<p>Current Goal Weight: " . $_COOKIE['goalWeight'] ."lbs</p>"?>
 
-    <input type="submit" value="Save Personal Information">
-
+    <div class="personalButton">
+        <input type="submit" value="Save Personal Information">
+    </div>
 
     </form>
 </div>
