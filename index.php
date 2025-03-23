@@ -130,9 +130,10 @@
 
                     $strengthTime = $row4['strengthTime'];
 
-                    echo "<p>Recent Strength Workout: " . $strengthType . " (" . $strengthTime . " minutes)</p>";
+
                 }
-                
+
+                echo "<p>Recent Strength Workout: " . $strengthType . " (" . $strengthTime . " minutes)</p>";                
 
 
                 $query5 = "SELECT
@@ -151,8 +152,9 @@
 
                     $cardioTime = $row5['cardioTime'];
                     
-                    echo "<p>Recent Cardio Workout: " . $cardioType . " (" . $cardioTime . " minutes)</p>";
                 }
+
+                echo "<p>Recent Cardio Workout: " . $cardioType . " (" . $cardioTime . " minutes)</p>";
 
             ?>
 
