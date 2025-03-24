@@ -25,7 +25,7 @@
 <header>
 <nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container">
-            <a href="#" class="navbar-brand">Brand</a>
+            <a href="#" class="navbar-brand">Core Athletics</a>
             <ul class="navbar-nav">
 
                 <li class="nav-item">
@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
+                    <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="goals.php">Goals</a>
                         <a class="dropdown-item" href="settings.php">Settings</a>
@@ -64,12 +64,16 @@
                     </div>
                 </li>
             </ul>
+            <div class="buttons">
+                <a href="login.php" class="btn btn-light">Login</a>
+                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
+            </div>
         </div>
     </nav>
 </header>
 
 <h1>Personal</h1>
-<p>Update Your Personal Information</p>
+<p>Update Your Personal Goals.</p>
 
 <div class="container">
     <form action="goalsresult.php" method="POST">
@@ -79,21 +83,39 @@
         <div class="input-group-text">Calories</div>
         <input type="number" id="calorieGoal" name="calorieGoal" step="1" min="0" class="form-control">
     </div>
-    <?php echo "<p>Current Calorie Goal: " . $_COOKIE['calorieGoal'] ." cal/day</p>";?>
+    <?php 
+        if (isset($_COOKIE['calorieGoal'])) {
+            echo "<p>Current Calorie Goal: " . $_COOKIE['calorieGoal'] ." cal/day</p>";
+        } else {
+            echo "<p>Current Calorie Goal: Not Set Yet.</p>";
+        }
+    ?>
 
     <label for="currentWeight" class="form-label">Set Your Current Weight:</label>
     <div class="input-group">
         <div class="input-group-text">lbs</div>
         <input type="number" id="currentWeight" name="currentWeight" step="1" min="0" class="form-control">
     </div>
-    <?php echo "<p>Current Set Weight: " . $_COOKIE['currentWeight'] ."lbs</p>"?>
+    <?php 
+        if (isset($_COOKIE['currentWeight'])) {
+            echo "<p>Current Weight: " . $_COOKIE['currentWeight'] ." lbs.</p>";
+        } else {
+            echo "<p>Current Weight: Not Set Yet.</p>";
+        }
+        ?>
 
     <label for="currentWeight" class="form-label">Set Your Goal Weight:</label>
     <div class="input-group">
         <div class="input-group-text">lbs</div>
         <input type="number" id="goalWeight" name="goalWeight" step="1" min="0" class="form-control">
     </div>
-    <?php echo "<p>Current Goal Weight: " . $_COOKIE['goalWeight'] ."lbs</p>"?>
+    <?php 
+        if (isset($_COOKIE['goalWeight'])) {
+            echo "<p>Current Weight: " . $_COOKIE['goalWeight'] ." lbs.</p>";
+        } else {
+            echo "<p>Current Goal Weight: Not Set Yet.</p>";
+        }
+    ?>
 
     <div class="personalButton">
         <input type="submit" value="Save Personal Information">
@@ -101,6 +123,23 @@
 
     </form>
 </div>
+
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <div class="name">
+                <p>Core Athletics</p>
+            </div>
+
+            <div class="footerlinks">
+                <a href="index.php">Dashboard</a>
+                <a href="coachoverview.php">Coaching</a>
+                <a href="settings.php">Profile</a>
+                <a href="nutritionoverview.php">Nutrition</a>
+                <a href="fitnessoverview.php">Fitness</a>
+            </div>
+            </div>
+        </footer>
 
 </body>
 </html>

@@ -26,7 +26,7 @@
 <header>
 <nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container">
-            <a href="#" class="navbar-brand">Brand</a>
+            <a href="#" class="navbar-brand">Core Athletics</a>
             <ul class="navbar-nav">
 
                 <li class="nav-item">
@@ -50,7 +50,7 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nutrition</a>
+                    <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nutrition</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="nutritionoverview.php">Overview</a>
                         <a class="dropdown-item" href="nutrition.php">Add a Meal</a>
@@ -65,6 +65,10 @@
                     </div>
                 </li>
             </ul>
+            <div class="buttons">
+                <a href="login.php" class="btn btn-light">Login</a>
+                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
+            </div>
         </div>
     </nav>
 </header>
@@ -95,7 +99,7 @@
 
     if ($sql6) {
         echo "<p>Meal successfully logged.</p>";
-        echo "<p>Total meal calories: " . $calories . "calories.</p>";
+        echo "<p>Total meal calories: " . $calories . " calories.</p>";
         echo "<p>This meal will be added to your dashboard.</p>";
     } else {
         echo "<p>Meal not logged, please try again.</p>";
@@ -103,9 +107,24 @@
     }
 ?>
 
-<a href="nutrition.php">View Dashboard.</a>
+<a href="index.php">View Dashboard.</a>
 
     
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <div class="name">
+                <p>Core Athletics</p>
+            </div>
+
+            <div class="footerlinks">
+                <a href="index.php">Dashboard</a>
+                <a href="coachoverview.php">Coaching</a>
+                <a href="settings.php">Profile</a>
+                <a href="nutritionoverview.php">Nutrition</a>
+                <a href="fitnessoverview.php">Fitness</a>
+            </div>
+            </div>
+        </footer>
 
 </body>
 </html>

@@ -3,10 +3,9 @@
     box-sizing: border-box;
 }
 
-/* body {
-    background-color: #fdf9f0;
-} */
-
+body {
+    background-color: #f9f9f9;
+}
 
 
 .dashboardCard {
@@ -23,36 +22,68 @@
     height: 80vh;
     max-width: 90%;
     gap: 1rem;
-    margin: 2rem;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 90vh;
+    width: auto;
 }
 
 .cardOne {
     grid-column: 1/2;
     grid-row: 1/2;
     background-color: #f9f9f9;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
 .cardTwo {
     grid-column: 2/3;
     grid-row: 1/4;
     background-color:#f9f9f9;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
 .cardThree {
     grid-column: 1/2;
     grid-row: 2/5;
     background-color: #f9f9f9;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
 .cardFour {
     grid-column: 2/3;
     grid-row: 4/5;
     background-color: #f9f9f9;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
+.bold {
+    font-weight: 600;
+}
 
 .pieChart {
-    width: 20rem;
+    width: 12rem;
     height: auto;
 }
 
+
+@media screen and (max-width: 1048px) {
+    .dashboardGrid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+    
