@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Coach Overview</h1>
-<p>Information on the different coaching sessions.</p>
+<div class="container">
+    <h1>Coach Overview</h1>
+    <p>Information on the different coaching sessions.</p>
+</div>
     
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

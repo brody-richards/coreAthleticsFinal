@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Nutrition Overview.</h1>
-<p>Information on nutrition.</p>
+<div class="container">
+    <h1>Nutrition Overview.</h1>
+    <p>Information on nutrition.</p>
+</div>
     
 
 

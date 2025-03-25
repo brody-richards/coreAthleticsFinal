@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Sign Up</h1>
-<p>Please enter the following information.</p>
+<div class="container">
+    <h1>Sign Up</h1>
+    <p>Please enter the following information.</p>
+</div>
 
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

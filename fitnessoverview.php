@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Fitness Overview.</h1>
-<p>Information on fitness.</p>
+<div class="container">
+    <h1>Fitness Overview.</h1>
+    <p>Information on fitness.</p>
+</div>
     
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

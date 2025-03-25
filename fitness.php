@@ -72,10 +72,9 @@
     </nav>
 </header>
 
-<h1>Fitness</h1>
-<p>Add Your Daily Workout</p>
-
 <div class="container">
+    <h1>Fitness</h1>
+    <p>Add Your Daily Workout</p>
     <form action="fitnessresult.php" method="POST">
         
         <div class="strengthWorkout">

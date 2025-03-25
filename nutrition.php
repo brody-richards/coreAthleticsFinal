@@ -73,11 +73,14 @@
     </nav>
 </header>
 
-<h1>Nutrition</h1>
-<p>Add a meal for the day.</p>
+
 
 <div class="container">
-<form action="nutritionresult.php" method="POST">
+
+    <h1>Nutrition</h1>
+    <p>Add a meal for the day.</p>
+
+    <form action="nutritionresult.php" method="POST">
 
     <label for="carbs" class="form-label">Total Carbs:</label>
     <div class="input-group">

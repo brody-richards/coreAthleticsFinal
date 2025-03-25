@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Personal Profile Settings</h1>
-<p>Update your personal information.</p>
+<div class="container">
+    <h1>Personal Profile Settings</h1>
+    <p>Update your personal information.</p>
+</div>
     
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

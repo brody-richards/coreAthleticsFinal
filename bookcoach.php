@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Book a Coach</h1>
-<p>Choose a specific session to book.</p>
+<div class="container">
+    <h1>Book a Coach</h1>
+    <p>Choose a specific session to book.</p>
+</div>
 
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

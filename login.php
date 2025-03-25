@@ -73,8 +73,10 @@
     </nav>
 </header>
 
-<h1>Log In</h1>
-<p>Log in with your information.</p>
+<div class="container">
+    <h1>Log In</h1>
+    <p>Log in with your information.</p>
+</div>
 
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

@@ -72,10 +72,11 @@
     </nav>
 </header>
 
-<h1>Personal</h1>
-<p>Update Your Personal Goals.</p>
-
 <div class="container">
+
+    <h1>Personal</h1>
+    <p>Update Your Personal Goals.</p>
+
     <form action="goalsresult.php" method="POST">
 
     <label for="calorieGoal" class="form-label">Change Daily Calorie Goal:</label>
