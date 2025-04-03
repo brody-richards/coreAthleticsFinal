@@ -31,43 +31,31 @@
     </nav>
 </header>
 
-<div class="container">
+<?php 
 
-    <h1>Sign Up</h1>
-    <p>Add the following personal information.</p>
+$email = mysqli_real_escape_string($connection, $_POST['email']);
 
-    <form action="signupresult.php" method="POST">
+$firstName = mysqli_real_escape_string($connection, $_POST['firstName']);
 
-    <label for="email" class="form-label">Email:</label>
-    <div class="input-group">
-        <input type="text" id="email" name="email" class="form-control">
-    </div>
+$lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
 
-    <label for="firstName" class="form-label">First Name:</label>
-    <div class="input-group">
-        <input type="text" id="firstName" name="firstName" class="form-control">
-    </div>
+$birthday = mysqli_real_escape_string($connection, $_POST['birthday']);
 
-    <label for="lastName" class="form-label">Last Name:</label>
-    <div class="input-group">
-        <input type="text" id="lastName" name="lastName" class="form-control">
-    </div>
+$password = mysqli_real_escape_string($connection, $_POST['password']);
 
-    <label for="birthday" class="form-label">Birthday:</label>
-    <div class="input-group">
-        <input type="date" id="birthday" name="birthday" class="form-control">
-    </div>
+$query10 = "INSERT INTO athleteProfile (email,firstName,lastName,birthday,password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
 
-    <label for="password" class="form-label">Password:</label>
-    <div class="input-group">
-        <input type="text" id="password" name="password" class="form-control">
-    </div>
+$sql10 = mysqli_query($connection, $query10);
 
-    <input type="submit" label="Sign Up">
+if ($sql10) {
+    echo "<p>Account Successfully Created.</p>";
+    echo "<a href='index.php'>View Dashboard.</a>";
+} else {
+    echo "<p>Error, please try again.</p>";
+    echo mysqli_error($connection);
+}
 
-</form>
-
-</div>
+?>
 
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
