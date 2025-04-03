@@ -33,23 +33,9 @@
 </header>
 
 <div class="container">
-    <h1>Login</h1>
-    <p>Add your account information.</p>
-
-    <form action="loginresult.php" method="POST">
-
-    <label for="email" class="form-label">Email:</label>
-    <div class="input-group">
-        <input type="text" id="email" name="email" class="form-control">
-    </div>
-
-    <label for="password" class="form-label">Password:</label>
-    <div class="input-group">
-        <input type="text" id="password" name="password" class="form-control">
-    </div>
-
-    <input type="submit" label="Login">
-</form>
+    <h1>Login / Sign Up</h1>
+    <a href="login.php">Login</a>
+    <a href="signup.php">Sign Up</a>
 </div>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

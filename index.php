@@ -68,9 +68,7 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="login.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
