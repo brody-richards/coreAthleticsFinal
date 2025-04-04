@@ -8,6 +8,11 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+
+    $bookingTime = mysqli_real_escape_string($connection, $_POST['time']);
+    $bookingNotes = mysqli_real_escape_string($connection, $_POST['notes']);
+    setcookie('bookingTime', $bookingTime, strtotime("+1 year"), "/");
+    setcookie('bookingNotes', $bookingNotes, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>
@@ -73,13 +78,92 @@
     </nav>
 </header>
 
+
 <div class="container">
-    <h1>Book a Coach</h1>
-    <p>Choose a specific session to book.</p>
-    <a href="initialcoach.php">Initial Consultation</a>
-    <a href="nutritioncoach.php">Nutrition Coach</a>
-    <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a>
+    <h1>Booking Information | RESULT</h1>
+    <p>Add and verify the following details.</p>
+
+
+    <h2>Personal Details</h2>
+
+    <?php 
+
+    $userID = $_COOKIE['id'];
+
+    $query15 = "SELECT * FROM athleteProfile WHERE id='$userID'";
+
+    $sql15 = mysqli_query($connection,$query15);
+
+    while($row15 = mysqli_fetch_array($sql15)) {
+
+        $firstName = $row15['firstName'];
+
+        $lastName = $row15['lastName'];
+
+        $email = $row15['email'];
+
+        $birthday = $row15['birthday'];
+
+        echo "<p>Full Name: " . $firstName . " " . $lastName . ".</p>";
+        echo "<p>Email: " . $email . ".</p>";
+        echo "<p>Birthday: " . date('F j, Y', strtotime($birthday)) . ".</p>";
+    }
+
+    ?>
+
+    <h2>Appointment Details</h2>
+    
+    <p>Date: <?php echo date('F j, Y', strtotime($_COOKIE['bookingDate'])); ?> </p>
+
+
+    <?php 
+
+        if($bookingTime==1) {
+            echo "<p>Time: 9AM - 9:45AM</p>";
+        }
+        else if($bookingTime==2) {
+            echo "<p>Time: 10AM - 10:45AM</p>";
+        }
+        else if($bookingTime==3) {
+            echo "<p>Time: 11AM - 11:45AM</p>";
+        }
+        else if($bookingTime==4) {
+            echo "<p>Time: 12PM - 12:45PM</p>";
+        }
+        else if($bookingTime==5) {
+            echo "<p>Time: 1PM - 1:45PM</p>";
+        }
+        else if($bookingTime==6) {
+            echo "<p>Time: 2PM - 2:45PM</p>";
+        }
+        else if($bookingTime==7) {
+            echo "<p>Time: 3PM - 3:45PM</p>";
+        } else {
+            echo "<p>Time: 4PM - 4:45PM</p>";
+        }
+
+    ?>
+
+    <?php 
+
+    $query17 = "SELECT * FROM services WHERE id=2";
+
+    $sql17 = mysqli_query($connection,$query17);
+
+    $row17 = mysqli_fetch_array($sql17);
+
+    $name = $row17['name'];
+
+    echo "<p>Type: " . $name . "</p>";
+
+    ?>
+
+    <p>Notes: <?php echo $_POST['notes']; ?> </p>
+
+    <a href="coachconfirmation.php">Book Now</a>
+
+
+    
 </div>
 
 

@@ -8,6 +8,10 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+
+    $bookingDate = mysqli_real_escape_string($connection, $_POST['date']);
+
+    setcookie('bookingDate', $bookingDate, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>
@@ -73,13 +77,37 @@
     </nav>
 </header>
 
+
 <div class="container">
-    <h1>Book a Coach</h1>
-    <p>Choose a specific session to book.</p>
-    <a href="initialcoach.php">Initial Consultation</a>
-    <a href="nutritioncoach.php">Nutrition Coach</a>
-    <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a>
+    <h1>Booking Information</h1>
+    <p>Add and verify the following details.</p>
+
+    <h2>Appointment Details</h2>
+
+    <p>Date: <?php echo date('F j, Y', strtotime($_COOKIE['bookingDate'])); ?> </p>
+    <form action="coachresult.php" method="POST">
+        <label for="time">Select a Time:</label>
+        <select name="time" id="time" class="form-select" required>
+        <option value="" disabled selected>Select a Time:</option>
+
+            <?php 
+            
+            $query14 = 'SELECT * FROM appointmentTimes';
+
+            $sql14 = mysqli_query($connection,$query14);
+
+            while ($row14 = mysqli_fetch_array($sql14)) {
+                echo "<option value='" . $row14['id'] . "'>" . $row14['name'] . "</option>"; 
+            }
+
+            ?>
+        </select>
+        
+        <label for="notes" class="form-label">Add notes for coach: (optional)</label>
+        <input type="text" name="notes" id="notes" class="form-control" max="100">
+
+        <input type="submit" label="Continue">
+    </form>
 </div>
 
 

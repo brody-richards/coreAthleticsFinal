@@ -7,7 +7,7 @@
     $connection = mysqli_connect($server,$username,$password,$database);
     if(!$connection){
         die(mysqli_connect_error());
-    }
+    }    
 ?>
 
 <!DOCTYPE html>
@@ -74,14 +74,37 @@
 </header>
 
 <div class="container">
-    <h1>Book a Coach</h1>
-    <p>Choose a specific session to book.</p>
-    <a href="initialcoach.php">Initial Consultation</a>
-    <a href="nutritioncoach.php">Nutrition Coach</a>
-    <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a>
-</div>
+    <h1>Your booking is confirmed.</h1>
 
+    <?php
+
+        $userID = $_COOKIE['id'];
+
+        $trainerID = 1;
+
+        $bookingDate = $_COOKIE['bookingDate'];
+
+        $bookingType = 2;
+
+        $bookingTime = $_COOKIE['bookingTime'];
+
+        $bookingNotes = $_COOKIE['bookingNotes'];
+
+        $status = 'booked';
+
+        $query19 = "INSERT INTO appointment (userID,trainerID,bookingDate,bookingType,bookingTime,bookingNotes,status) VALUES ('$userID','$trainerID','$bookingDate','$bookingType','$bookingTime','$bookingNotes','$status')";
+
+        $sql19 = mysqli_query($connection,$query19);
+
+        if ($sql19) {
+            echo "<p>Booking Confirmed</p>";
+        } else {
+            echo "<p>Booking Error. Please Try Again.</p>";
+            echo mysqli_error($connection);
+        }
+
+    ?>
+</div>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">

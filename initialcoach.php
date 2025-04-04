@@ -74,8 +74,23 @@
 </header>
 
 <div class="container">
-    <h1>Book a Coach</h1>
-    <p>Choose a specific session to book.</p>
+    <h1>Initial Consultation</h1>
+    <h2>Who is it for?</h2>
+    <p>For athletes who want to work with a nutritionist to create personalized meal plans tailored to their specific fitness goals.</p>
+
+    <h2>What's Included?</h2>
+    <h3>Tailored Meal Planning</h3>
+    <p>Work with a nutritionist to develop a meal plan that aligns with your training and fitness goals.</p>
+
+    <h3>Guidance on Dietary Restrictions</h3>
+    <p>Receive expert guidance on how to work around hurtles like food allergies, intolerance, and dietary preferences without compromising athletic performance.</p>
+
+    <h3>Nutrition Education & Athletic Performance</h3>
+    <p>Learn how essential nutrition principles, such as caloric deficits, surpluses, intermittent fasting, and others, can enhance athletic performance.</p>
+
+
+
+
     <a href="initialcoach.php">Initial Consultation</a>
     <a href="nutritioncoach.php">Nutrition Coach</a>
     <a href="strengthcoach.php">Strength Coach</a>

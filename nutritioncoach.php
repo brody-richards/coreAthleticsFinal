@@ -20,6 +20,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
 
@@ -73,13 +75,40 @@
     </nav>
 </header>
 
-<div class="container">
-    <h1>Book a Coach</h1>
-    <p>Choose a specific session to book.</p>
-    <a href="initialcoach.php">Initial Consultation</a>
+<div class="container coachBox">
+    <div class="left">
+        <h1>Nutrition Coaching</h1>
+        <h2>Who is it for?</h2>
+        <p>For athletes who want to work with a nutritionist to create personalized meal plans tailored to their specific fitness goals.</p>
+
+        <h2>What's Included?</h2>
+        <h3>Tailored Meal Planning</h3>
+        <p>Work with a nutritionist to develop a meal plan that aligns with your training and fitness goals.</p>
+
+        <h3>Guidance on Dietary Restrictions</h3>
+        <p>Receive expert guidance on how to work around hurtles like food allergies, intolerance, and dietary preferences without compromising athletic performance.</p>
+
+        <h3>Nutrition Education & Athletic Performance</h3>
+        <p>Learn how essential nutrition principles, such as caloric deficits, surpluses, intermittent fasting, and others, can enhance athletic performance.</p>
+    </div>
+
+    <div class="right">
+        <h3>Book a Nutrition Coach:</h3>
+
+        <div class="coachForm container">
+            <form action="checkcoach.php" method="POST">
+                <label for="date">Select a Date:</label>
+                <input type="date" id="date" name="date">
+
+                <input type="submit" label="Submit">
+            </form>
+        </div>
+    </div>
+
+    <!-- <a href="initialcoach.php">Initial Consultation</a>
     <a href="nutritioncoach.php">Nutrition Coach</a>
     <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a>
+    <a href="recoverycoach.php">Recovery Coach</a> -->
 </div>
 
 
@@ -102,3 +131,14 @@
 
 </body>
 </html>
+
+<script>
+    flatpickr("#date", {
+    disable: [
+        function(date) {
+        return date.getDay() === 0 || date.getDay() === 6;
+        }
+    ],
+    dateFormat: "Y-m-d"
+});
+</script>

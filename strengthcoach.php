@@ -74,7 +74,7 @@
 </header>
 
 <div class="container">
-    <h1>Book a Coach</h1>
+    <h1>Strength Coaching</h1>
     <p>Choose a specific session to book.</p>
     <a href="initialcoach.php">Initial Consultation</a>
     <a href="nutritioncoach.php">Nutrition Coach</a>

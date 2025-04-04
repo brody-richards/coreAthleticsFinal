@@ -80,6 +80,37 @@ body {
 }
 
 
+.coachBox {
+    display: flex;
+    flex-direction: row;
+    background-color: #f9f9f9;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.left {
+    width: 70%;
+    padding: 2rem;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 2rem;
+    padding: 2rem;
+}
+
+
+
+
+
+
 @media screen and (max-width: 1048px) {
     .dashboardGrid {
         display: flex;
