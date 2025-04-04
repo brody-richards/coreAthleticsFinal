@@ -79,7 +79,7 @@
 
 <?php 
 
-    $userID = 1;
+    $userID = $_COOKIE['id'];
     $date = date('Y-m-d H:i:s');
 
     // $userID - get from cookie
