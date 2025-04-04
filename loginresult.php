@@ -20,19 +20,6 @@
     $sql11 = mysqli_query($connection, $query11);
 
     $row = mysqli_num_rows($sql11);
-
-    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //     $username = strtolower($_POST['username']);
-    //     $password = $_POST['password'];
-
-    //     if (($username === 'agent' && $password === 'password123') || $username === 'dustin' && $password === 'wolf') {
-    //         setcookie('username',$username,strtotime('+24 hours'));
-    //         header('Location: result.php');
-    //         exit;
-    //     } else {
-    //         setcookie('username','agent',time()-3600);
-    //     }
-    // }
 ?>
 
 <!DOCTYPE html>

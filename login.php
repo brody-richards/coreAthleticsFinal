@@ -50,6 +50,8 @@
 
     <input type="submit" label="Login">
 </form>
+
+    <a href="signup.php">Sign Up</a>
 </div>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
