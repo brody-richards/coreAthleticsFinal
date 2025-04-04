@@ -68,7 +68,7 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Logout</a>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
