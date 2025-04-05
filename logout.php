@@ -9,11 +9,13 @@
         die(mysqli_connect_error());
     }
     
-    if (isset($_COOKIE['id'])) {
-        setcookie('id', '', time() - 3600, "/");
-    }
-    header('Location: login.php');
-    exit;
+    // if (isset($_COOKIE['id'])) {
+    //     setcookie('id', '', time() - 3600, "/");
+    // }
+    // header('Location: login.php');
+    // exit;
+
+    
 ?>
 
 <!DOCTYPE html>

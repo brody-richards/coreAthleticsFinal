@@ -92,13 +92,19 @@
 
             <?php 
             
-            $query14 = 'SELECT * FROM appointmentTimes';
+            // $query14 = 'SELECT * FROM appointmentTimes';
+
+            $bookingDate = $_COOKIE['bookingDate'];
+            
+            $query14 = "SELECT appointmentTimes.id,appointmentTimes.name FROM appointmentTimes LEFT JOIN appointment ON appointmentTimes.id = appointment.bookingTime AND appointment.bookingDate = '$bookingDate' WHERE appointment.bookingTime IS NULL";
 
             $sql14 = mysqli_query($connection,$query14);
 
             while ($row14 = mysqli_fetch_array($sql14)) {
                 echo "<option value='" . $row14['id'] . "'>" . $row14['name'] . "</option>"; 
             }
+
+            // if bookingDate and bookingTime exist, do not show 
 
             ?>
         </select>
