@@ -165,7 +165,79 @@
         </div>
 
         <div class="cardThree">
-            <h2>Upcoming Bookings</h2>
+            <h2>Upcoming Booking</h2>
+            
+            <?php 
+            
+            $userID = $_COOKIE['id'];
+
+            $query20 = "SELECT * FROM appointment WHERE userID='$userID' ORDER BY bookingDate asc LIMIT 1";
+        
+            $sql20 = mysqli_query($connection,$query20);
+        
+            while($row20 = mysqli_fetch_array($sql20)) {
+        
+                $nextBookingDate = $row20['bookingDate'];
+        
+                $nextBookingTime = $row20['bookingTime'];
+        
+                $nextBookingCoach = $row20['trainerID'];
+        
+                $nextBookingType = $row20['bookingType'];
+
+
+                echo "<p><span class='bold'>Next Booking:</span> " . date('F j, Y', strtotime($nextBookingDate)) . ".</p>";
+
+                // next booking time
+                if($nextBookingTime==1) {
+                    echo "<p><span class='bold'>Time:</span> 9AM - 9:45AM</p>";
+                }
+                else if($nextBookingTime==2) {
+                    echo "<p><span class='bold'>Time:</span> 10AM - 10:45AM</p>";
+                }
+                else if($nextBookingTime==3) {
+                    echo "<p><span class='bold'>Time:</span> 11AM - 11:45AM</p>";
+                }
+                else if($nextBookingTime==4) {
+                    echo "<p><span class='bold'>Time:</span> 12PM - 12:45PM</p>";
+                }
+                else if($nextBookingTime==5) {
+                    echo "<p><span class='bold'>Time:</span> 1PM - 1:45PM</p>";
+                }
+                else if($nextBookingTime==6) {
+                    echo "<p><span class='bold'>Time:</span> 2PM - 2:45PM</p>";
+                }
+                else if($nextBookingTime==7) {
+                    echo "<p><span class='bold'>Time:</span> 3PM - 3:45PM</p>";
+                } else {
+                    echo "<p><span class='bold'>Time:</span> 4PM - 4:45PM</p>";
+                }
+
+
+                // next booking coach
+                echo "<p><span class='bold'>Coach:</span> Julie Baker</p>";
+                // echo "<p><span class='bold'>Coach:</span> " . $nextBookingCoach . ".</p>";
+
+
+                // next booking type
+                // echo "<p><span class='bold'>Appointment Type:</span> " . $nextBookingType . ".</p>";
+
+                if($nextBookingType==1) {
+                    echo "<p><span class='bold'>Appointment Type</span> Initial Consultation</p>";
+                }
+                else if($nextBookingType==2) {
+                    echo "<p><span class='bold'>Appointment Type</span> Nutrition Coaching</p>";
+                }
+                else if($nextBookingType==3) {
+                    echo "<p><span class='bold'>Appointment Type</span> Fitness Coaching</p>";
+                } else {
+                    echo "<p><span class='bold'>Appointment Type</span> Recovery Coaching</p>";
+                }
+
+            }
+            
+            ?>
+
         </div>
         <div class="cardFour">
             <h2>Fitness</h2>

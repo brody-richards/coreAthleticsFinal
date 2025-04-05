@@ -84,7 +84,7 @@
 
     <h2>Appointment Details</h2>
 
-    <p>Date: <?php echo date('F j, Y', strtotime($_COOKIE['bookingDate'])); ?> </p>
+    <p>Date: <?php echo date('F j, Y', strtotime($_POST['date'])); ?> </p>
     <form action="coachresult.php" method="POST">
         <label for="time">Select a Time:</label>
         <select name="time" id="time" class="form-select" required>
@@ -94,7 +94,7 @@
             
             // $query14 = 'SELECT * FROM appointmentTimes';
 
-            $bookingDate = $_COOKIE['bookingDate'];
+            $bookingDate = $_POST['date'];
             
             $query14 = "SELECT appointmentTimes.id,appointmentTimes.name FROM appointmentTimes LEFT JOIN appointment ON appointmentTimes.id = appointment.bookingTime AND appointment.bookingDate = '$bookingDate' WHERE appointment.bookingTime IS NULL";
 
