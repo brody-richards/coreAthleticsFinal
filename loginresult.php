@@ -19,7 +19,11 @@
 
     $sql11 = mysqli_query($connection, $query11);
 
-    $row = mysqli_num_rows($sql11);
+    $row = mysqli_fetch_array($sql11);
+
+    $id = $row['id'];
+
+    setcookie('id', $id, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>

@@ -44,6 +44,7 @@
     </nav>
 </header>
 
+<div class="container">
 <h1>All Information.</h1>
 <p>Verify the following information.</p>
 
@@ -94,7 +95,7 @@
 ?>
 
 <a href="index.php">View My Dashboard</a>
-
+</div>
 </div>
 
 
