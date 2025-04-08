@@ -79,7 +79,6 @@ body {
     height: auto;
 }
 
-
 .coachBox {
     display: flex;
     flex-direction: row;
@@ -99,11 +98,24 @@ body {
 .right {
     display: flex;
     flex-direction: column;
-    width: 30%;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 20px;
     margin: 2rem;
     padding: 2rem;
+}
+
+.coachForm form {
+    padding: 1.4rem 0;
+}
+
+.coachBox h3 {
+    font-size: 1.4rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 

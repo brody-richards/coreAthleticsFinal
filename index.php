@@ -10,6 +10,13 @@
     }
     $currentDate = date('Y-m-d');
     // echo $currentDate;
+
+    foreach ($_COOKIE as $key => $value) {
+        if ($key != 'id') {
+            setcookie($key, '', time() - 3600, "/");
+        }
+    }
+    
 ?>
 
 <!DOCTYPE html>

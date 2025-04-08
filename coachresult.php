@@ -146,7 +146,7 @@
 
     <?php 
 
-    $query17 = "SELECT * FROM services WHERE id=2";
+$query17 = "SELECT * FROM services WHERE id = " . $_COOKIE['bookingType'];
 
     $sql17 = mysqli_query($connection,$query17);
 

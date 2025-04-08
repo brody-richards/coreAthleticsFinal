@@ -84,7 +84,7 @@
 
         $bookingDate = $_COOKIE['bookingDate'];
 
-        $bookingType = 2;
+        $bookingType = $_COOKIE['bookingType'];
 
         $bookingTime = $_COOKIE['bookingTime'];
 

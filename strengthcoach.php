@@ -8,6 +8,9 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    
+    $bookingType = 3;
+    setcookie('bookingType', $bookingType, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +18,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition | Core Athletics
+    <title>Fitness Coaching | Core Athletics
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
 
@@ -74,12 +79,55 @@
 </header>
 
 <div class="container">
-    <h1>Strength Coaching</h1>
-    <p>Choose a specific session to book.</p>
-    <a href="initialcoach.php">Initial Consultation</a>
-    <a href="nutritioncoach.php">Nutrition Coach</a>
-    <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a>
+    <div class="container min-vh-100 d-flex align-items-center">
+        <div class="coachBox">
+                <div class="left">
+                    <div class="title">
+                        <img src="img/nutrition.png" alt="nutrition coaching symbol" width="60" height="60">
+                        <h1>Fitness Coaching</h1>
+                    </div>
+
+                        <div class="intro my-5">
+                            <h2>Who is it for?</h2>
+                            <p>For athletes who want to work with a trainer to create personalized workouts tailored to their specific fitness goals, with an emphasis on teaching proper technique to help avoid injuries.</p>
+                        </div>
+
+                        <div class="goalTitle my-4">
+                            <h2>What's Included?</h2>
+                        </div>
+
+                        <div class="goalOne">
+                            <h3>Assess Fitness Levels</h3>
+                            <p>Our coaches will do a thorough test on all fitness related aspects of your life to better understand you as an athlete.</p>
+                        </div>
+
+                        <div class="goalTwo my-4">
+                            <h3>Understand Goals</h3>
+                            <p>Our coaches will go through all your specific fitness goals and find solutions to any problems you may have.</p>
+                        </div>
+
+                        <div class="goalThree my-4">
+                            <h3>Optimize Athletic Performance</h3>
+                            <p>Our coaches will draft a plan to get you started for you to optimize your workouts.</p>
+                        </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="right">
+                        <h3>Book a Fitness Coach:</h3>
+
+                        <div class="coachForm container">
+                            <form action="checkcoach.php" method="POST">
+                                <label for="date">Select a Date:</label>
+                                <input type="date" id="date" name="date">
+
+                                <input type="submit" label="Submit">
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -102,3 +150,14 @@
 
 </body>
 </html>
+
+<script>
+    flatpickr("#date", {
+    disable: [
+        function(date) {
+        return date.getDay() === 0 || date.getDay() === 6;
+        }
+    ],
+    dateFormat: "Y-m-d"
+});
+</script>

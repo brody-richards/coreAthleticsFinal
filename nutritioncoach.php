@@ -8,6 +8,9 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+
+    $bookingType = 2;
+    setcookie('bookingType', $bookingType, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>
@@ -75,40 +78,56 @@
     </nav>
 </header>
 
-<div class="container coachBox">
-    <div class="left">
-        <h1>Nutrition Coaching</h1>
-        <h2>Who is it for?</h2>
-        <p>For athletes who want to work with a nutritionist to create personalized meal plans tailored to their specific fitness goals.</p>
+<div class="container">
+    <div class="container min-vh-100 d-flex align-items-center">
+        <div class="coachBox">
+                <div class="left">
+                    <div class="title">
+                        <img src="img/nutrition.png" alt="nutrition coaching symbol" width="60" height="60">
+                        <h1>Nutrition Coaching</h1>
+                    </div>
 
-        <h2>What's Included?</h2>
-        <h3>Tailored Meal Planning</h3>
-        <p>Work with a nutritionist to develop a meal plan that aligns with your training and fitness goals.</p>
+                        <div class="intro my-5">
+                            <h2>Who is it for?</h2>
+                            <p>For athletes who want to work with a nutritionist to create personalized meal plans tailored to their specific fitness goals.</p>
+                        </div>
 
-        <h3>Guidance on Dietary Restrictions</h3>
-        <p>Receive expert guidance on how to work around hurtles like food allergies, intolerance, and dietary preferences without compromising athletic performance.</p>
+                        <div class="goalTitle my-4">
+                            <h2>What's Included?</h2>
+                        </div>
 
-        <h3>Nutrition Education & Athletic Performance</h3>
-        <p>Learn how essential nutrition principles, such as caloric deficits, surpluses, intermittent fasting, and others, can enhance athletic performance.</p>
-    </div>
+                        <div class="goalOne">
+                            <h3>Tailored Meal Planning</h3>
+                            <p>Work with a nutritionist to develop a meal plan that aligns with your training and fitness goals.</p>
+                        </div>
 
-    <div class="right">
-        <h3>Book a Nutrition Coach:</h3>
+                        <div class="goalTwo my-4">
+                            <h3>Guidance on Dietary Restrictions</h3>
+                            <p>Receive expert guidance on how to work around hurtles like food allergies, intolerance, and dietary preferences without compromising athletic performance.</p>
+                        </div>
 
-        <div class="coachForm container">
-            <form action="checkcoach.php" method="POST">
-                <label for="date">Select a Date:</label>
-                <input type="date" id="date" name="date">
+                        <div class="goalThree my-4">
+                            <h3>Nutrition Education & Athletic Performance</h3>
+                            <p>Learn how essential nutrition principles, such as caloric deficits, surpluses, intermittent fasting, and others, can enhance athletic performance.</p>
+                        </div>
+                </div>
 
-                <input type="submit" label="Submit">
-            </form>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="right">
+                        <h3>Book a Nutrition Coach:</h3>
+
+                        <div class="coachForm container">
+                            <form action="checkcoach.php" method="POST">
+                                <label for="date">Select a Date:</label>
+                                <input type="date" id="date" name="date">
+
+                                <input type="submit" label="Submit">
+                            </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- <a href="initialcoach.php">Initial Consultation</a>
-    <a href="nutritioncoach.php">Nutrition Coach</a>
-    <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a> -->
 </div>
 
 

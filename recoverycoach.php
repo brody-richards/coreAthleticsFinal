@@ -8,6 +8,8 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    $bookingType = 4;
+    setcookie('bookingType', $bookingType, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>
