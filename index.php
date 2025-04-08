@@ -253,11 +253,14 @@
             <?php 
                 $query4 = "SELECT 
                 workouts.strengthType, 
-                workouts.strengthTime, 
+                workouts.strengthTime,
+                workouts.userID,
+                workouts.date,
                 workoutType.id, 
                 workoutType.name 
                 FROM workouts 
-                INNER JOIN workoutType ON workouts.strengthType = workoutType.id";
+                INNER JOIN workoutType ON workouts.strengthType = workoutType.id 
+                WHERE workouts.userID = '" . $_COOKIE['id'] . "' AND workouts.date = '$currentDate'";
 
                 $sql4 = mysqli_query($connection, $query4);
 
@@ -270,16 +273,22 @@
 
                 }
 
-                echo '<p><span class="bold">Recent Strength Workout: </span>' . $strengthType . ' (' . $strengthTime . ' minutes)</p>';
+                if (isset($strengthType) && isset($strengthTime)) {
+                    echo '<p><span class="bold">Recent Strength Workout: </span>' . $strengthType . ' (' . $strengthTime . ' minutes)</p>';
+                } else {
+                    echo "<p>Today's Strength workout has not been logged.</p>";
+                }
 
 
                 $query5 = "SELECT
                 workouts.cardioType, 
                 workouts.cardioTime,
+                workouts.userID,
+                workouts.date,
                 workoutType.id, 
                 workoutType.name
                 FROM workouts
-                INNER JOIN workoutType ON workouts.cardioType = workoutType.id";
+                INNER JOIN workoutType ON workouts.cardioType = workoutType.id WHERE workouts.userID = '" . $_COOKIE['id'] . "' AND workouts.date = '$currentDate'";
 
                 $sql5 = mysqli_query($connection, $query5);
 
@@ -291,11 +300,17 @@
                     
                 }
 
-                echo '<p><span class="bold">Recent Cardio Workout: </span>' . $cardioType . ' (' . $cardioTime . ' minutes)</p>';
+                if (isset($cardioType) && isset($cardioTime)) {
+                    echo '<p><span class="bold">Recent Cardio Workout: </span>' . $cardioType . ' (' . $cardioTime . ' minutes)</p>';
+                } else {
+                    echo "<p>Today's Cardio workout has not been logged.</p>";
+                }
 
             ?>
 
             <?php 
+
+            if (isset($cardioTime) && isset($strengthTime)) {
 
                 $totalMinutes = $strengthTime + $cardioTime;
 
@@ -311,52 +326,58 @@
                     echo '<p><span class="bold">Total Workout Time: </span>' . $totalHours . ' hours ' . $remainingMinutes.' minutes</p>';
                 }
 
+                $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
-                $gender = 'man'; // make in cookie
+                $sql = mysqli_query($connection, $query);
+            
+                while($row = mysqli_fetch_array($sql)) {
+            
+                    $gender = $row['gender'];
 
+                    $currentWeight = $row['currentWeight'];
+                }
 
+            // if (isset($_COOKIE['currentWeight'])) {
 
-            if (isset($_COOKIE['currentWeight'])) {
-
-                // ----------------------- strength calculations
+            //     // ----------------------- strength calculations
 
                 // 125 and BELOW
-                if ($_COOKIE['currentWeight'] <= 125 && $gender == 'man') {
+                if ($currentWeight <= 125 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 3.5*$totalMinutes) .' calories</p>';
                 } 
-                else if ($_COOKIE['currentWeight'] <= 125 && $gender == 'woman') {
+                else if ($currentWeight <= 125 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 2.7*$totalMinutes) .' calories</p>';
                 }
 
                 // 126 - 155
-                else if ($_COOKIE['currentWeight'] >= 126 && $_COOKIE['currentWeight'] <= 155 && $gender == 'man') {
+                else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 4.1*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 126 && $_COOKIE['currentWeight'] <= 155 && $gender == 'woman') {
+                else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 3.3*$totalMinutes) .' calories</p>';
                 }
 
                 // 156 - 185
-                else if ($_COOKIE['currentWeight'] >= 156 && $_COOKIE['currentWeight'] <= 185 && $gender == 'man') {
+                else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 5.2*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 156 && $_COOKIE['currentWeight'] <= 185 && $gender == 'woman') {
+                else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 4.5*$totalMinutes) .' calories</p>';
                 }
 
                 // 186 - 215
-                else if ($_COOKIE['currentWeight'] >= 186 && $_COOKIE['currentWeight'] <= 215 && $gender == 'man') {
+                else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 6.5*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 186 && $_COOKIE['currentWeight'] <= 215 && $gender == 'woman') {
+                else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 5.8*$totalMinutes) .' calories</p>';
                 }
 
                 // 216 and UP
-                else if ($_COOKIE['currentWeight'] >= 216 && $gender == 'man') {
+                else if ($currentWeight >= 216 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 7.8*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 216 && $gender == 'woman') {
+                else if ($currentWeight >= 216 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>' . ($totalCaloriesBurnedStrength = 7.0*$totalMinutes) .' calories</p>';
                 }
 
@@ -365,53 +386,58 @@
                 // cardio calculations
 
                 // 125 and BELOW
-                if ($_COOKIE['currentWeight'] <= 125 && $gender == 'man') {
+                if ($currentWeight <= 125 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 6.0*$totalMinutes) . ' calories</p>';
                 } 
-                else if ($_COOKIE['currentWeight'] <= 125 && $gender == 'woman') {
+                else if ($currentWeight <= 125 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 4.5*$totalMinutes) .' calories</p>';
                 }
 
                 // 126 - 155
-                else if ($_COOKIE['currentWeight'] >= 126 && $_COOKIE['currentWeight'] <= 155 && $gender == 'man') {
+                else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 7.1*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 126 && $_COOKIE['currentWeight'] <= 155 && $gender == 'woman') {
+                else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 5.3*$totalMinutes) .' calories</p>';
                 }
 
                 // 156 - 185
-                else if ($_COOKIE['currentWeight'] >= 156 && $_COOKIE['currentWeight'] <= 185 && $gender == 'man') {
+                else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 9.0*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 156 && $_COOKIE['currentWeight'] <= 185 && $gender == 'woman') {
+                else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 7.0*$totalMinutes) .' calories</p>';
                 }
 
                 // 186 - 215
-                else if ($_COOKIE['currentWeight'] >= 186 && $_COOKIE['currentWeight'] <= 215 && $gender == 'man') {
+                else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 11.0*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 186 && $_COOKIE['currentWeight'] <= 215 && $gender == 'woman') {
+                else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 8.6*$totalMinutes) .' calories</p>';
                 }
 
                 // 216 and UP
-                else if ($_COOKIE['currentWeight'] >= 216 && $gender == 'man') {
+                else if ($currentWeight >= 216 && $gender == 'man') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 13.0*$totalMinutes) .' calories</p>';
                 }
-                else if ($_COOKIE['currentWeight'] >= 216 && $gender == 'woman') {
+                else if ($currentWeight >= 216 && $gender == 'woman') {
                     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: </span>' . ($totalCaloriesBurnedCardio = 10.3*$totalMinutes) .' calories</p>';
                 }
 
                 echo'<p><span class="bold">Estimated Total Calories Burned: </span>' . $totalCaloriesBurnedStrength + $totalCaloriesBurnedCardio . ' calories</p>';
             
-            } else {
-                echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>Personal Details Not Set.</p>';
-                echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: Personal Details Not Set.</p>';
-                echo '<p><span class="bold">Estimated Total Calories Burned: Unavailable Until Goals Have Been Set.</p>';
-                echo '<a href="goals.php">Set Your Goals</a>';
-            }
+            // } else {
+            //     echo '<p><span class="bold">Estimated Calories Burned from Strength Training: </span>Personal Details Not Set.</p>';
+            //     echo '<p><span class="bold">Estimated Calories Burned from Cardio Training: Personal Details Not Set.</p>';
+            //     echo '<p><span class="bold">Estimated Total Calories Burned: Unavailable Until Goals Have Been Set.</p>';
+            //     echo '<a href="goals.php">Set Your Goals</a>';
+            // }
+
+        } else {
+            echo "<p>Please log today's workout to see your breakdown.</p>";
+            echo "<a href='fitness.php'>Log Daily Workout</a>";
+}
 
             ?>
         </div>
