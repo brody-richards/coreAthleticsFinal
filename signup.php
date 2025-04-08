@@ -58,6 +58,15 @@
         <input type="date" id="birthday" name="birthday" class="form-control">
     </div>
 
+    <div class="cardioWorkout">
+            <label for="gender" class="form-label">Gender:</label>
+                <select name="gender" id="gender" class="form-select">
+                <option value="" disabled selected>Select a gender:</option>
+                <option value="man">Male</option>
+                <option value="woman">Female</option>
+            </select>
+    </div>
+
     <label for="password" class="form-label">Password:</label>
     <div class="input-group">
         <input type="text" id="password" name="password" class="form-control">

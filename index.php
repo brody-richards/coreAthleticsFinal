@@ -10,30 +10,6 @@
     }
     $currentDate = date('Y-m-d');
     // echo $currentDate;
-
-    // $email = mysqli_real_escape_string($connection, $_POST['email']);
-    // echo $email;
-    
-
-    // // $query21 = "SELECT id FROM athleteProfile WHERE email"
-
-
-    // // $query13 = "SELECT * FROM athleteProfile WHERE email='$email'";
-
-    // // $sql13 = mysqli_query($connection,$query13);
-
-    // // $row13 = mysqli_fetch_array($sql13);
-
-    // // $id = $row13['id'];
-
-    // // setcookie('id', $id, strtotime("+1 year"), "/");
-
-    // // if (!isset($_COOKIE['id'])) {
-    // //     setcookie('id',40,strtotime("+1 year"));
-    // //     header('Location: setrateresult.php');
-    // //     exit;
-    // // }
-
 ?>
 
 <!DOCTYPE html>

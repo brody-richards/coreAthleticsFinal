@@ -9,18 +9,26 @@
         die(mysqli_connect_error());
     }
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $calorieGoal = $_POST['calorieGoal'];
-        $currentWeight = $_POST['currentWeight'];
-        $goalWeight = $_POST['goalWeight'];
+        // add
+        
+        $calorieGoal = mysqli_real_escape_string($connection, $_POST['calorieGoal']);
+    
+        $currentWeight = mysqli_real_escape_string($connection, $_POST['currentWeight']);
+        
+        $goalWeight = mysqli_real_escape_string($connection, $_POST['goalWeight']);
 
-    setcookie('calorieGoal',$calorieGoal,strtotime("+1 year"),"/");
-    setcookie('currentWeight',$currentWeight,strtotime("+1 year"),"/");
-    setcookie('goalWeight',$goalWeight,strtotime("+1 year"),"/");
+        $id = $_COOKIE['id'];
+        
+        $query10 = "UPDATE athleteProfile SET calorieGoal='$calorieGoal', currentWeight='$currentWeight', goalWeight='$goalWeight' WHERE id='$id'";
+        
+        $sql10 = mysqli_query($connection, $query10);
 
-    header("Location: detailsresult.php");
-    exit();
-}
+        // setcookie('calorieGoal',$calorieGoal,strtotime("+1 year"),"/");
+        // setcookie('currentWeight',$currentWeight,strtotime("+1 year"),"/");
+        // setcookie('goalWeight',$goalWeight,strtotime("+1 year"),"/");
+
+        // header("Location: detailsresult.php");
+        // exit();
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +72,8 @@
 
         $birthday = $row5['birthday'];
 
+        $gender = $row5['gender'];
+
         $password = $row5['password'];
     }
 
@@ -71,26 +81,33 @@
     echo "<p>First Name: " . $firstName . "</p>";
     echo "<p>Last Name: " . $lastName . "</p>";
     echo "<p>Birthday: " . $birthday . "</p>";
+    echo "<p>Gender: " . $gender . "</p>";
     echo "<p>Password: " . $password . "</p>";
 
+    echo "<p>Daily Calorie Goal: " . $calorieGoal . "</p>";
+    echo "<p>Current Weight: " . $currentWeight . "</p>";
+    echo "<p>Goal Weight: " . $goalWeight . "</p>";
 
-    if (isset($_COOKIE['calorieGoal'])) {
-        echo "<p>Your new calorie goal is " . $_COOKIE['calorieGoal']."</p>";
-    } else {
-        echo "<p>Your calorie goal remains the same.</p>";
-    }
 
-    if (isset($_COOKIE['currentWeight'])) {
-        echo "<p>Your new current weight is " . $_COOKIE['currentWeight']."</p>";
-    } else {
-        echo "<p>Your weight remains the same.</p>";
-    }
+    // if (isset($_COOKIE['calorieGoal'])) {
+    //     echo "<p>Your new calorie goal is " . $_COOKIE['calorieGoal']."</p>";
+    // } else {
+    //     echo "<p>Your calorie goal remains the same.</p>";
+    // }
 
-    if (isset($_COOKIE['goalWeight'])) {
-        echo "<p>Your new goal weight is " . $_COOKIE['goalWeight']."</p>";
-    } else {
-        echo "<p>Your goal weight remains the same.</p>";
-    }
+    // if (isset($_COOKIE['currentWeight'])) {
+    //     echo "<p>Your new current weight is " . $_COOKIE['currentWeight']."</p>";
+    // } else {
+    //     echo "<p>Your weight remains the same.</p>";
+    // }
+
+    // if (isset($_COOKIE['goalWeight'])) {
+    //     echo "<p>Your new goal weight is " . $_COOKIE['goalWeight']."</p>";
+    // } else {
+    //     echo "<p>Your goal weight remains the same.</p>";
+    // }
+
+
 
 ?>
 

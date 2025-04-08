@@ -9,8 +9,8 @@
         die(mysqli_connect_error());
     }
     
-    if (isset($_COOKIE['id'])) {
-        setcookie('id', '', time() - 3600, "/");
+    foreach ($_COOKIE as $key => $value) {
+        setcookie($key, '', time() - 3600, "/");
     }
     header('Location: login.php');
     exit;

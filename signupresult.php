@@ -17,10 +17,12 @@
     $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
     
     $birthday = mysqli_real_escape_string($connection, $_POST['birthday']);
+
+    $gender = mysqli_real_escape_string($connection, $_POST['gender']);
     
     $password = mysqli_real_escape_string($connection, $_POST['password']);
     
-    $query10 = "INSERT INTO athleteProfile (email,firstName,lastName,birthday,password) VALUES ('$email','$firstName','$lastName','$birthday','$password')";
+    $query10 = "INSERT INTO athleteProfile (email,firstName,lastName,birthday,gender,password) VALUES ('$email','$firstName','$lastName','$birthday','$gender','$password')";
     
     $sql10 = mysqli_query($connection, $query10);
 
