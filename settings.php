@@ -76,8 +76,38 @@
 <div class="container">
     <h1>Personal Profile Settings</h1>
     <p>Update your personal information.</p>
-</div>
+
+    <?php
     
+    $query12 = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+
+    $sql12 = mysqli_query($connection, $query12);
+
+    while($row5 = mysqli_fetch_array($sql12)) {
+        
+        $email = $row5['email'];
+
+        $firstName = $row5['firstName'];
+
+        $lastName = $row5['lastName'];
+
+        $birthday = $row5['birthday'];
+
+        $gender = $row5['gender'];
+
+        $password = $row5['password'];
+    }
+
+    echo "<p>Email: " . $email . "</p>";
+    echo "<p>First Name: " . $firstName . "</p>";
+    echo "<p>Last Name: " . $lastName . "</p>";
+    echo "<p>Birthday: " . $birthday . "</p>";
+    echo "<p>Gender: " . $gender . "</p>";
+    echo "<p>Password: " . $password . "</p>";
+
+    ?>
+    
+    </div>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">

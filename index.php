@@ -78,18 +78,27 @@
         <div class="cardOne">
             <h2>Personal Information</h2>
             <?php 
-            if (isset($_COOKIE['currentWeight'])) {
-                echo '<p><span class="bold">Current Set Weight:</span> ' . $_COOKIE['currentWeight'] .'lbs</p>';
-            } else {
-                echo '<p><span class="bold">Current Weight:</span> Not Set Yet.</p>';
-            };
+                $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
-            if (isset($_COOKIE['goalWeight'])) {
-                echo '<p><span class="bold">Current Goal Weight: </span>' . $_COOKIE['goalWeight'] .'lbs</p>';
-            } else {
-                echo '<p><span class="bold">Goal Weight: Not Set Yet.</span></p>';
-                echo '<a href="goals.php">Set Your Goals</a>';
-            };
+                $sql = mysqli_query($connection, $query);
+            
+                while($row = mysqli_fetch_array($sql)) {
+            
+                    $calorieGoal = $row['calorieGoal'];
+            
+                    $currentWeight = $row['currentWeight'];
+            
+                    $goalWeight = $row['goalWeight'];
+
+                    $firstName = $row['firstName'];
+
+                    $lastName = $row['lastName'];
+                }
+                
+                echo '<p><span class="bold">Name:</span> ' . ucfirst($firstName) . ' ' . ucfirst($lastName) . '</p>';
+                echo '<p><span class="bold">Current Weight:</span> ' . $currentWeight . ' lbs.</p>';
+                echo '<p><span class="bold">Goal Weight:</span> ' . $goalWeight . ' lbs.</p>';
+
             ?>
         </div>
 
@@ -97,44 +106,44 @@
 
         <div class="cardTwo">
             <h2>Nutrition</h2>
-            <?php 
-            if (isset($_COOKIE['calorieGoal'])) {
-            echo '<p><span class="bold">Daily Calorie Goal: </span>' . $_COOKIE['calorieGoal'] .' calories/day</p>';
+    <?php 
+            $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
-            $query7 = "SELECT SUM(calories) FROM meal WHERE date='$currentDate'";
+            $sql = mysqli_query($connection, $query);
+        
+            while($row = mysqli_fetch_array($sql)) {
+        
+                $calorieGoal = $row['calorieGoal'];
+        
+            }
+            
+            echo '<p><span class="bold">Daily Calorie Goal:</span> ' . $calorieGoal . '</p>';
+
+            ?>
+
+            <?php 
+            
+            $query7 = "SELECT SUM(calories) FROM meal WHERE date='$currentDate' AND userID = '" . $_COOKIE['id'] . "'";
 
             $sql7 = mysqli_query($connection, $query7);
 
             while ($row7 =mysqli_fetch_array($sql7)) {
                 $caloriesLogged = $row7[0];
+
+                $remainingCalories = $calorieGoal - $caloriesLogged;
             }
 
-            echo '<p><span class="bold">Daily Calories Logged: </span>' . $caloriesLogged . '</p>';
-
+            if ($remainingCalories > 0) {
+            echo '<p><span class="bold">Remaining Calories: </span>' . $remainingCalories . '</p>';
             } else {
-                echo "<p>Daily Calorie Goal has not been set yet.</p>";
+                echo '<p><span class="bold">Remaining Calories:</span> 0 (over by: ' . ($remainingCalories * -1) . ' calories)</p>';
             }
+            
             ?>
 
             <?php 
             
-            if (isset($_COOKIE['calorieGoal'])) {
-                $remainingCalories = $_COOKIE['calorieGoal'] - $caloriesLogged;
-
-                if ($remainingCalories >= 0) {
-                    echo '<p><span class="bold">Remaining Calories: </span>' . $remainingCalories . ' calories</p>';
-                } else {
-                    echo '<p><span class="bold">Remaining Calories: </span>' . ($remainingCalories*(-1)) . ' calories over your daily goal' . "</p>";
-                }
-
-            } else {
-                echo '<p><span class="bold">Remaining Calories: </span>Calculation Unavailable until Calorie Goal is set.</p>';
-            }
-            ?>
-
-            <?php 
-            
-            $query8 = "SELECT COUNT(mealID) FROM meal WHERE date= '$currentDate'";
+            $query8 = "SELECT COUNT(mealID),userID FROM meal WHERE date = '$currentDate' AND userID = '" . $_COOKIE['id'] . "'";
 
             $sql8 = mysqli_query($connection,$query8);
 
@@ -148,7 +157,7 @@
             ?>
 
             <?php
-                $query9 = "SELECT SUM(protein),SUM(fat),SUM(carbs),SUM(calories) FROM meal WHERE date='$currentDate'";
+                $query9 = "SELECT SUM(protein),SUM(fat),SUM(carbs),SUM(calories) FROM meal WHERE date='$currentDate' AND userID = '" . $_COOKIE['id'] . "'";
 
                 $sql9 = mysqli_query($connection, $query9);
 

@@ -77,7 +77,7 @@
 
 <?php 
 
-    $userID = 1;
+    $userID = $_COOKIE['id'];
     $date = date('Y-m-d H:i:s');
 
     $userID = mysqli_real_escape_string($connection, $userID);

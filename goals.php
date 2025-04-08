@@ -8,6 +8,19 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+
+    $sql = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_array($sql)) {
+
+        $calorieGoal = $row['calorieGoal'];
+
+        $currentWeight = $row['currentWeight'];
+
+        $goalWeight = $row['goalWeight'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -84,39 +97,21 @@
         <div class="input-group-text">Calories</div>
         <input type="number" id="calorieGoal" name="calorieGoal" step="1" min="0" class="form-control">
     </div>
-    <?php 
-        if (isset($_COOKIE['calorieGoal'])) {
-            echo "<p>Current Calorie Goal: " . $_COOKIE['calorieGoal'] ." cal/day</p>";
-        } else {
-            echo "<p>Current Calorie Goal: Not Set Yet.</p>";
-        }
-    ?>
+        <?php echo "<p>Current Calorie Goal: " . $calorieGoal ." cal/day</p>";?>
 
     <label for="currentWeight" class="form-label">Set Your Current Weight:</label>
     <div class="input-group">
         <div class="input-group-text">lbs</div>
         <input type="number" id="currentWeight" name="currentWeight" step="1" min="0" class="form-control">
     </div>
-    <?php 
-        if (isset($_COOKIE['currentWeight'])) {
-            echo "<p>Current Weight: " . $_COOKIE['currentWeight'] ." lbs.</p>";
-        } else {
-            echo "<p>Current Weight: Not Set Yet.</p>";
-        }
-        ?>
+        <?php echo "<p>Current Weight: " . $currentWeight ." lbs.</p>";?>
 
     <label for="currentWeight" class="form-label">Set Your Goal Weight:</label>
     <div class="input-group">
         <div class="input-group-text">lbs</div>
         <input type="number" id="goalWeight" name="goalWeight" step="1" min="0" class="form-control">
     </div>
-    <?php 
-        if (isset($_COOKIE['goalWeight'])) {
-            echo "<p>Current Weight: " . $_COOKIE['goalWeight'] ." lbs.</p>";
-        } else {
-            echo "<p>Current Goal Weight: Not Set Yet.</p>";
-        }
-    ?>
+    <?php echo "<p>Goal Weight: " . $goalWeight ." lbs.</p>";?>
 
     <div class="personalButton">
         <input type="submit" value="Save Personal Information">
