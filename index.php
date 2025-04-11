@@ -29,15 +29,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link active" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -80,10 +82,30 @@
     </nav>
 </header>
 
+<div class="introBox">
+
+    <?php 
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+
+    $sql = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_array($sql)) {
+
+        $firstName = $row['firstName'];
+    }
+                
+    echo "<p><strong class'bold'>Welcome to your dashboard, </strong>" . ucfirst($firstName) . "</p>";
+    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    ?>
+</div>
+
 
     <div class="dashboardGrid">
         <div class="cardOne">
-            <h2>Personal Information</h2>
+            <div class="bentoTitle">
+            <img src="img/userIcon.png" alt="user icon">
+                <h2>Personal Information</h2>
+            </div>
             <?php 
                 $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
@@ -112,7 +134,10 @@
 
 
         <div class="cardTwo">
-            <h2>Nutrition</h2>
+            <div class="bentoTitle">
+                <img src="img/nutrition.png" alt="nutrition icon">
+                <h2>Nutrition</h2>
+            </div>
     <?php 
             $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
@@ -180,9 +205,11 @@
         
         </div>
 
-        <div class="cardThree">
-            <h2>Upcoming Booking</h2>
-            
+    <div class="cardThree">
+        <div class="bentoTitle">
+            <img src="img/calendar.png" alt="calendar icon">
+                <h2>Upcoming Bookings</h2>
+            </div>
             <?php 
             
             $userID = $_COOKIE['id'];
@@ -256,7 +283,10 @@
 
         </div>
         <div class="cardFour">
-            <h2>Fitness</h2>
+        <div class="bentoTitle">
+            <img src="img/dumbbell.png" alt="dumbbell icon">
+                <h2>Fitness</h2>
+            </div>
             <?php 
                 $query4 = "SELECT 
                 workouts.strengthType, 
@@ -450,7 +480,7 @@
         </div>
     </div>
 
-        <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <footer class="text-white text-center py-3 mt-auto" style="background-color: #07402B;">
         <div class="container">
             <div class="name">
                 <p>Core Athletics</p>
