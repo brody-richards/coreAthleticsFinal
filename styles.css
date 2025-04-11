@@ -3,8 +3,11 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     background-color: #f9f9f9;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -116,6 +119,98 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+
+
+/* .loginContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginContainer img {
+    width: 500px;
+    height: auto;
+}
+
+.loginBox {
+    height: auto;
+    background-color: #07402B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.loginBox img {
+    width: 500px;
+    height: auto;
+}
+
+.card {
+    max-width: 500px;
+    width: 100%;
+    background-color: #07402B;
+    padding: 2rem;
+    border: 8px solid #f9f9f9;
+    border-radius: 30px;
+}
+
+.card h1 {
+    color: #f9f9f9;
+}
+
+.card label {
+    color: #f9f9f9;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+} */
+
+body .loginSignupGrid {
+    background-color: #07402B;
+}
+
+.loginSignupGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
+
+.loginSignupLeft {
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 4rem;
+}
+
+.loginSignupRight {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem;
+    color: #f9f9f9;
+}
+
+.loginSignupRight form {
+    font-size: 1.4rem;
+}
+
+.formElement {
+    margin: 2rem 0;
+}
+
+
+.loginSignupOption a {
+    margin: 0 1.2rem;
+    border: 2px solid #f9f9f9;
+    font-size: 1.4rem;
+}
+.loginSignupOption p {
+    color: #f9f9f9;
+    margin-top: 2rem;
+    font-size: 1.2rem;
 }
 
 

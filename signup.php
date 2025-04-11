@@ -23,14 +23,7 @@
 </head>
 <body>
 
-<header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
-    </nav>
-</header>
-
+<!-- 
 <div class="container">
 
     <h1>Sign Up</h1>
@@ -38,64 +31,114 @@
 
     <form action="signupresult.php" method="POST">
 
-    <label for="email" class="form-label">Email:</label>
-    <div class="input-group">
-        <input type="text" id="email" name="email" class="form-control">
-    </div>
+        <label for="email" class="form-label">Email:</label>
+        <div class="input-group">
+            <input type="text" id="email" name="email" class="form-control">
+        </div>
 
-    <label for="firstName" class="form-label">First Name:</label>
-    <div class="input-group">
-        <input type="text" id="firstName" name="firstName" class="form-control">
-    </div>
+        <label for="firstName" class="form-label">First Name:</label>
+        <div class="input-group">
+            <input type="text" id="firstName" name="firstName" class="form-control">
+        </div>
 
-    <label for="lastName" class="form-label">Last Name:</label>
-    <div class="input-group">
-        <input type="text" id="lastName" name="lastName" class="form-control">
-    </div>
+        <label for="lastName" class="form-label">Last Name:</label>
+        <div class="input-group">
+            <input type="text" id="lastName" name="lastName" class="form-control">
+        </div>
 
-    <label for="birthday" class="form-label">Birthday:</label>
-    <div class="input-group">
-        <input type="date" id="birthday" name="birthday" class="form-control">
-    </div>
+        <label for="birthday" class="form-label">Birthday:</label>
+        <div class="input-group">
+            <input type="date" id="birthday" name="birthday" class="form-control">
+        </div>
 
-    <div class="cardioWorkout">
-            <label for="gender" class="form-label">Gender:</label>
-                <select name="gender" id="gender" class="form-select">
-                <option value="" disabled selected>Select a gender:</option>
-                <option value="man">Male</option>
-                <option value="woman">Female</option>
-            </select>
-    </div>
+        <div class="cardioWorkout">
+                <label for="gender" class="form-label">Gender:</label>
+                    <select name="gender" id="gender" class="form-select">
+                    <option value="" disabled selected>Select a gender:</option>
+                    <option value="man">Male</option>
+                    <option value="woman">Female</option>
+                </select>
+        </div>
 
-    <label for="password" class="form-label">Password:</label>
-    <div class="input-group">
-        <input type="text" id="password" name="password" class="form-control">
-    </div>
+        <label for="password" class="form-label">Password:</label>
+        <div class="input-group">
+            <input type="text" id="password" name="password" class="form-control">
+        </div>
 
-    <input type="submit" label="Sign Up">
+        <input type="submit" label="Sign Up">
 
-</form>
+    </form>
 
 <a href="login.php">Login</a>
 
+</div> -->
+
+
+<div class="loginSignupGrid">
+    <div class="loginSignupLeft">
+        <img class="card-img-top" src="img/mainLogoGreen.svg" alt="Card image cap">
+    </div>
+
+    <div class="loginSignupRight">
+        <h1>Sign Up</h1>
+        <p>Add the following personal information.</p>
+
+        <form action="signupresult.php" method="POST">
+
+            <div class="formElement">
+                <label for="email" class="form-label">Email:</label>
+                <div class="input-group">
+                    <input type="text" id="email" name="email" class="form-control">
+                </div>
+            </div>
+
+            <div class="formElement">
+                <label for="firstName" class="form-label">First Name:</label>
+                <div class="input-group">
+                    <input type="text" id="firstName" name="firstName" class="form-control">
+                </div>
+            </div>
+
+            <div class="formElement">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <div class="input-group">
+                    <input type="text" id="lastName" name="lastName" class="form-control">
+                </div>
+            </div>
+
+            <div class="formElement">
+                <label for="birthday" class="form-label">Birthday:</label>
+                <div class="input-group">
+                    <input type="date" id="birthday" name="birthday" class="form-control">
+                </div>
+            </div>
+
+            <div class="formElement">
+                <div class="cardioWorkout">
+                        <label for="gender" class="form-label">Gender:</label>
+                            <select name="gender" id="gender" class="form-select">
+                            <option value="" disabled selected>Select a gender:</option>
+                            <option value="man">Male</option>
+                            <option value="woman">Female</option>
+                        </select>
+                </div>
+            </div>
+
+            <div class="formElement">
+                <label for="password" class="form-label">Password:</label>
+                <div class="input-group">
+                    <input type="text" id="password" name="password" class="form-control">
+                </div>
+            </div>
+
+                <input type="submit" value="Continue" class="btn btn-light btn-lg mt-4">
+        </form>
+
+        <div class="loginSignupOption">
+            <p>Already have an account? <a href="login.php" class="btn btn-outline-light pr-2">Login</a></p>
+        </div>
+    </div>
 </div>
-
-
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
-
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer>
     
 
 </body>
