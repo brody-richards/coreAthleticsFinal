@@ -28,11 +28,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -70,9 +71,7 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>

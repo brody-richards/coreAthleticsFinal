@@ -20,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition | Core Athletics
+    <title>Check Booking Information | Core Athletics
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -29,11 +29,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -71,16 +72,17 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
+<main>
+
+<section class="appointmentDetails">
 
 <div class="container">
-    <h1>Booking Information | RESULT</h1>
+    <h1>Booking Information | Check Information</h1>
     <p>Add and verify the following details.</p>
 
 
@@ -104,9 +106,9 @@
 
         $birthday = $row15['birthday'];
 
-        echo "<p>Full Name: " . $firstName . " " . $lastName . ".</p>";
-        echo "<p>Email: " . $email . ".</p>";
-        echo "<p>Birthday: " . date('F j, Y', strtotime($birthday)) . ".</p>";
+        echo "<p><strong class='bold'>Full Name: </strong>" . $firstName . " " . $lastName . ".</p>";
+        echo "<p><strong class='bold'>Email: </strong>" . $email . ".</p>";
+        echo "<p><strong class='bold'>Birthday: </strong>" . date('F j, Y', strtotime($birthday)) . ".</p>";
     }
 
     ?>
@@ -119,27 +121,27 @@
     <?php 
 
         if($bookingTime==1) {
-            echo "<p>Time: 9AM - 9:45AM</p>";
+            echo "<p><strong class='bold'>Time: </strong>9AM - 9:45AM</p>";
         }
         else if($bookingTime==2) {
-            echo "<p>Time: 10AM - 10:45AM</p>";
+            echo "<p><strong class='bold'>Time: </strong>10AM - 10:45AM</p>";
         }
         else if($bookingTime==3) {
-            echo "<p>Time: 11AM - 11:45AM</p>";
+            echo "<p><strong class='bold'>Time: </strong>11AM - 11:45AM</p>";
         }
         else if($bookingTime==4) {
-            echo "<p>Time: 12PM - 12:45PM</p>";
+            echo "<p><strong class='bold'>Time: </strong>12PM - 12:45PM</p>";
         }
         else if($bookingTime==5) {
-            echo "<p>Time: 1PM - 1:45PM</p>";
+            echo "<p><strong class='bold'>Time: </strong>1PM - 1:45PM</p>";
         }
         else if($bookingTime==6) {
-            echo "<p>Time: 2PM - 2:45PM</p>";
+            echo "<p><strong class='bold'>Time: </strong>2PM - 2:45PM</p>";
         }
         else if($bookingTime==7) {
-            echo "<p>Time: 3PM - 3:45PM</p>";
+            echo "<p><strong class='bold'>Time: </strong>3PM - 3:45PM</p>";
         } else {
-            echo "<p>Time: 4PM - 4:45PM</p>";
+            echo "<p><strong class='bold'>Time: </strong>4PM - 4:45PM</p>";
         }
 
     ?>
@@ -154,17 +156,21 @@ $query17 = "SELECT * FROM services WHERE id = " . $_COOKIE['bookingType'];
 
     $name = $row17['name'];
 
-    echo "<p>Type: " . $name . "</p>";
+    echo "<p><strong class='bold'>Type: </strong>" . $name . "</p>";
 
     ?>
 
-    <p>Notes: <?php echo $_POST['notes']; ?> </p>
+    <p><strong class="bold">Notes: </strong><?php echo $_POST['notes']; ?> </p>
 
-    <a href="coachconfirmation.php">Book Now</a>
+    <a href="coachconfirmation.php" class="btn btn-dark btn-lg btn-block" style="background-color: #0d7a52">Book Now</a>
 
 
     
 </div>
+
+</section>
+
+</main>
 
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

@@ -33,11 +33,11 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link active" aria-current="dashboard page">Dashboard</a>
+                    <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coaching</a>
+                    <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coaching</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="coachoverview.php">Overview</a>
                         <a class="dropdown-item" href="bookcoach.php">Book a Coach</a>

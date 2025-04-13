@@ -24,11 +24,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -66,15 +67,17 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
+<main>
+
+<section class="appointmentDetails">
+
 <div class="container">
-    <h1>Your booking is confirmed.</h1>
+    <h1 class="mb-5">Your booking is confirmed.</h1>
 
     <?php
 
@@ -88,7 +91,7 @@
 
         $bookingTime = $_COOKIE['bookingTime'];
 
-        $bookingNotes = $_COOKIE['bookingNotes'];
+        $bookingNotes = $_COOKIE['bookingNotes'] ?? '';
 
         $status = 'booked';
 
@@ -97,7 +100,7 @@
         $sql19 = mysqli_query($connection,$query19);
 
         if ($sql19) {
-            echo "<p>Booking Confirmed</p>";
+            echo '<a href="index.php" class="btn btn-dark btn-lg btn-block" style="background-color: #0d7a52">Back to dashboard</a>';
         } else {
             echo "<p>Booking Error. Please Try Again.</p>";
             echo mysqli_error($connection);
@@ -105,6 +108,9 @@
 
     ?>
 </div>
+
+</section>
+</main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
