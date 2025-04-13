@@ -139,14 +139,19 @@ main {
 .right {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
     border-radius: 20px;
     margin: 2rem;
     padding: 2rem;
+    background-color: #0d7a52;
+    color: #f9f9f9;
 }
 
 .coachForm form {
     padding: 1.4rem 0;
+}
+
+.coachBox h2 {
+    color: #07402B;
 }
 
 .coachBox h3 {
@@ -157,7 +162,15 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 1rem;
+    filter: invert(21%) sepia(63%) saturate(543%) hue-rotate(90deg) brightness(85%) contrast(91%);
 }
+
+.coachFormDate {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
 
 
 /* BOOK A COACH - INDIVIDUAL COACHES */
@@ -371,6 +384,16 @@ body .loginSignupGrid {
     .dashboardGrid {
         display: flex;
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1416px) {
+    .coachBox {
+        display: flex;
+        flex-direction: column;
+    }
+    .left {
+        width: 100%;
     }
 }
     

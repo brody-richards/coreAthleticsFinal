@@ -8,7 +8,8 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
-    $currentDate = date('Y-m-d');
+    $tomorrow = date('Y-m-d', strtotime('+1 day'));
+
     $bookingType = 3;
     setcookie('bookingType', $bookingType, strtotime("+1 year"), "/");
 ?>
@@ -23,18 +24,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
 
 <header>
-<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
-
+<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container">
-            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
-
+            <a href="#" class="navbar-brand">Core Athletics</a>
             <ul class="navbar-nav">
+
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -72,36 +70,20 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="logout.php" class="btn btn-light">Logout</a>
+                <a href="login.php" class="btn btn-light">Login</a>
+                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
+            </div>
         </div>
     </nav>
 </header>
 
 <main>
 
-<div class="introBox">
-
-    <?php 
-    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
-
-    $sql = mysqli_query($connection, $query);
-
-    while($row = mysqli_fetch_array($sql)) {
-
-        $firstName = $row['firstName'];
-    }
-                
-    echo "<p><strong class'bold'>Fitness Coaching</strong></p>";
-    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
-    ?>
-</div>
-
-
-    <div class="container min-vh-100 d-flex align-items-center">
+<div class="container min-vh-100 d-flex align-items-center">
         <div class="coachBox">
                 <div class="left">
                     <div class="title">
-                        <img src="img/nutrition.png" alt="nutrition coaching symbol" width="60" height="60">
+                        <img src="img/dumbbell.png" alt="Initial consultation symbol" width="60" height="60">
                         <h1>Fitness Coaching</h1>
                     </div>
 
@@ -132,14 +114,18 @@
 
                 <div class="d-flex align-items-center justify-content-center flex-column">
                     <div class="right">
-                        <h3>Book a Fitness Coach:</h3>
+                        <h3>Book an Fitness Coach:</h3>
 
                         <div class="coachForm container">
                             <form action="checkcoach.php" method="POST">
-                                <label for="date">Select a Date:</label>
-                                <input type="date" id="date" name="date">
+                                <div class="coachFormDate">
+                                    <label for="date">Select a Date:</label>
+                                    <input type="date" id="date" name="date" min="<?php echo $tomorrow ?>" required>
+                                </div>
 
-                                <input type="submit" label="Submit">
+                                <div class="coachFormButton">
+                                    <input type="submit" class="btn btn-light btn-lg btn-block" label="Book Time" id="submitButton">
+                                </div>
                             </form>
                     </div>
                 </div>
@@ -147,26 +133,23 @@
         </div>
     </div>
 
-
-    
-
-
 </main>
 
-<footer class="text-white text-center py-3 mt-auto" style="background-color: #07402B;">
+
+<footer class="bg-dark text-white text-center py-3 mt-auto">
     <div class="container">
         <div class="name">
             <p>Core Athletics</p>
         </div>
 
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
+        <div class="footerlinks">
+            <a href="index.php">Dashboard</a>
+            <a href="coachoverview.php">Coaching</a>
+            <a href="settings.php">Profile</a>
+            <a href="nutritionoverview.php">Nutrition</a>
+            <a href="fitnessoverview.php">Fitness</a>
         </div>
+    </div>
 </footer>
     
 
@@ -174,12 +157,19 @@
 </html>
 
 <script>
-    flatpickr("#date", {
-    disable: [
-        function(date) {
-        return date.getDay() === 0 || date.getDay() === 6;
+
+const dateSelection = document.getElementById('date');
+const submitButton = document.getElementById('submitButton');
+
+dateSelection.addEventListener('input', () => {
+    const selectedDate = new Date(dateSelection.value);
+    const day = selectedDate.getUTCDay();
+        
+        if (dateSelection.value && day !== 0 && day !== 6) {
+        submitButton.disabled = false;
+        } else {
+        submitButton.disabled = true;
         }
-    ],
-    dateFormat: "Y-m-d"
-});
+    });
+
 </script>
