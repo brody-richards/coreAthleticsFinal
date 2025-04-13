@@ -33,11 +33,11 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
+                    <a href="index.php" class="nav-link active" aria-current="dashboard page">Dashboard</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coaching</a>
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coaching</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="coachoverview.php">Overview</a>
                         <a class="dropdown-item" href="bookcoach.php">Book a Coach</a>
@@ -77,7 +77,6 @@
 <main>
 
 <div class="introBox">
-
     <?php 
     $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
@@ -102,7 +101,10 @@
 
     <a href="initialcoach.php" class="coachTag">
         <div class="initialCoach">
-            <h2>Initial Consultation</h2>
+        <h2>Initial Consultation</h2>
+            <div class="coachIcon">
+                <img src="img/talk.png" alt="nutrition coaching symbol" width="60" height="60">
+            </div>
             <p>The perfect starting point for new clients who want to explore the benefits of Core Athletics. Our Coaches are trained to be professional, friendly, and supportive as our clients start their fitness journey.</p>
             <p>During this session, we will walk you through our coaching process, explain the benefits, and show you why we are the right choice for you.</p>
         </div>
@@ -110,15 +112,24 @@
 
     <a href="nutritioncoach.php" class="coachTag">
         <div class="nutritionCoach">
-        <h2>Nutrition Coaching</h2>
-            <p>For athletes who want to work with a nutritionist to create personalized meal plans tailored to their specific fitness goals.</p>
-            <p>During this session, our coaches will help provide guidance on any dietary restrictions, help teach good nutrition practices, as well as optimize athletic performance.</p>
+            <h2>Nutrition Coaching</h2>
+            <div class="coachIcon">
+                <img src="img/nutrition.png" alt="nutrition coaching symbol" width="60" height="60">
+            </div>
+
+            <div class="coachText">
+                <p>For athletes who want to work with a nutritionist to create personalized meal plans tailored to their specific fitness goals.</p>
+                <p>During this session, our coaches will help provide guidance on any dietary restrictions, help teach good nutrition practices, as well as optimize athletic performance.</p>
+            </div>
         </div>
     </a>
 
     <a href="fitnesscoach.php" class="coachTag">
         <div class="fitnessCoach">
         <h2>Fitness Coaching</h2>
+            <div class="coachIcon">
+                <img src="img/dumbbell.png" alt="fitness coaching symbol" width="60" height="60">
+            </div>
             <p>For athletes who want to work with a trainer to create personalized workouts tailored to their specific fitness goals, with an emphasis on teaching proper technique to help avoid injuries.</p>
             <p>During this session, our coaches can help provide guidance by assessing fitness levels, understanding individual goals, and offer motivational support.</p>
         </div>
@@ -127,6 +138,9 @@
     <a href="recoverycoach.php" class="coachTag">
         <div class="recoveryCoach">
         <h2>Recovery Coaching</h2>
+            <div class="coachIcon">
+                <img src="img/exercising.png" alt="nutrition coaching symbol" width="60" height="60">
+            </div>
             <p>For athletes who suffer from injury, muscle strains, or anything else they might be dealing with.</p>
             <p>During this session, our coaches help by providing expert guidance through this stressful time. We offer our athletes alternative workouts and recovery techniques to support your healing journey, with a goal of getting you feeling both physically and mentally healthy.</p>
         </div>

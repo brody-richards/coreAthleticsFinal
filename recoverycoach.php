@@ -26,17 +26,18 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coaching</a>
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Coaching</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="coachoverview.php">Overview</a>
                         <a class="dropdown-item" href="bookcoach.php">Book a Coach</a>
@@ -68,38 +69,81 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
-<div class="container">
-    <h1>Recovery Coaching</h1>
-    <p>Choose a specific session to book.</p>
-    <a href="initialcoach.php">Initial Consultation</a>
-    <a href="nutritioncoach.php">Nutrition Coach</a>
-    <a href="strengthcoach.php">Strength Coach</a>
-    <a href="recoverycoach.php">Recovery Coach</a>
-</div>
+<main>
+
+<div class="container min-vh-100 d-flex align-items-center">
+        <div class="coachBox">
+                <div class="left">
+                    <div class="title">
+                        <img src="img/nutrition.png" alt="nutrition coaching symbol" width="60" height="60">
+                        <h1>Recovery Coaching</h1>
+                    </div>
+
+                        <div class="intro my-5">
+                            <h2>Who is it for?</h2>
+                            <p>For athletes who suffer from injury, muscle strains, or anything else they might be dealing with.</p>
+                        </div>
+
+                        <div class="goalTitle my-4">
+                            <h2>What's Included?</h2>
+                        </div>
+
+                        <div class="goalOne">
+                            <h3>Identify Alternative Workouts</h3>
+                            <p>Our coaches will help you shift your workouts to adapt to your recovery process and timeline.</p>
+                        </div>
+
+                        <div class="goalTwo my-4">
+                            <h3>Teach Recovery Techniques</h3>
+                            <p>Our coaches will teach about recovery techniques to help heal any conflicting problems.</p>
+                        </div>
+
+                        <div class="goalThree my-4">
+                            <h3>Body Stretching Session</h3>
+                            <p>Out coaches will go through a well constructed stretching routine to help you alleviate soreness.</p>
+                        </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="right">
+                        <h3>Book a Recovery Coach:</h3>
+
+                        <div class="coachForm container">
+                            <form action="checkcoach.php" method="POST">
+                                <label for="date">Select a Date:</label>
+                                <input type="date" id="date" name="date">
+
+                                <input type="submit" label="Submit">
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
 
 
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
+<footer class="text-white text-center py-3 mt-auto" style="background-color: #07402B;">
+    <div class="container">
+        <div class="name">
+            <p>Core Athletics</p>
+        </div>
 
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer>
+        <div class="footerlinks">
+            <a href="index.php">Dashboard</a>
+            <a href="coachoverview.php">Coaching</a>
+            <a href="settings.php">Profile</a>
+            <a href="nutritionoverview.php">Nutrition</a>
+            <a href="fitnessoverview.php">Fitness</a>
+        </div>
+    </div>
+</footer>
     
 
 </body>

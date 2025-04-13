@@ -14,6 +14,7 @@ html, body {
 main {
     max-width: 80%;
     margin: 0 auto;
+    min-height: 100vh;
 }
 
 .introBox {
@@ -116,17 +117,18 @@ main {
 }
 
 
-/* BOOK A COACH */
+/* BOOK A COACH - ALL COACHES */
 
 .coachBox {
     display: flex;
     flex-direction: row;
     background-color: #f9f9f9;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
     border: solid #f9f9f9 1px;
     border-radius: 20px;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .left {
@@ -157,6 +159,61 @@ main {
     align-items: center;
 }
 
+
+/* BOOK A COACH - INDIVIDUAL COACHES */
+
+/* .section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.coachingBox {
+    display: flex;
+    gap: 2rem;
+    border: 2px solid black;
+} */
+
+/* section {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.coachingBox {
+    display: flex;
+    flex-direction: row;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.coachingBoxLeft {
+
+}
+
+.coachingBoxRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.coachingBoxRightBorder {
+    border: 2px solid #07402B;
+    padding: 2rem;
+    border-radius: 20px;
+} */
 
 
 /* LOGIN AND SIGNUP */
@@ -209,7 +266,7 @@ body .loginSignupGrid {
 
 
 
-/* BOOK COACHING PAGE */
+/* BOOK COACHING PAGES */
 
 .bookCoach {
     display: grid;
@@ -283,6 +340,24 @@ body .loginSignupGrid {
 .initialCoach:hover, .nutritionCoach:hover, .fitnessCoach:hover, .recoveryCoach:hover {
     background-color: #f9f9f9;
     transform: scale(1.03);
+}
+
+.bookCoach {
+    height: auto;
+}
+
+.bookCoach h2 {
+    text-align: center;
+    color: #07402B;
+}
+
+.bookCoach img {
+    filter: invert(21%) sepia(63%) saturate(543%) hue-rotate(90deg) brightness(85%) contrast(91%);
+}
+
+.coachIcon {
+    margin: 2rem 0;
+    text-align: center;
 }
 
 
