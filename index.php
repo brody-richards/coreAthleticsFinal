@@ -82,6 +82,8 @@
     </nav>
 </header>
 
+<main>
+
 <div class="introBox">
 
     <?php 
@@ -480,21 +482,23 @@
         </div>
     </div>
 
-        <footer class="text-white text-center py-3 mt-auto" style="background-color: #07402B;">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
+</main>
 
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer>
+<footer class="text-white text-center py-3 mt-auto" style="background-color: #07402B;">
+    <div class="container">
+        <div class="name">
+            <p>Core Athletics</p>
+        </div>
+
+        <div class="footerlinks">
+            <a href="index.php">Dashboard</a>
+            <a href="coachoverview.php">Coaching</a>
+            <a href="settings.php">Profile</a>
+            <a href="nutritionoverview.php">Nutrition</a>
+            <a href="fitnessoverview.php">Fitness</a>
+        </div>
+    </div>
+</footer>
     
 
 

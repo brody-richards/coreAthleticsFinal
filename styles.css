@@ -1,4 +1,5 @@
 
+/* GLOBAL STYLES */
 * {
     box-sizing: border-box;
 }
@@ -10,6 +11,23 @@ html, body {
     padding: 0;
 }
 
+main {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.introBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    color: #07402B;
+}
+
+
+
+/* DASHBOARD */
 
 .dashboardCard {
     background-color: #f9f9f9;
@@ -23,14 +41,9 @@ html, body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     height: 80vh;
-    max-width: 90%;
     gap: 1rem;
-    max-width: 80%;
-    margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    height: 90vh;
-    width: auto;
 }
 
 .cardOne {
@@ -83,6 +96,28 @@ html, body {
     height: auto;
 }
 
+.bentoTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.bentoTitle img {
+    width: 50px;
+    height: auto;
+    filter: invert(21%) sepia(63%) saturate(543%) hue-rotate(90deg) brightness(85%) contrast(91%);
+}
+
+.bentoTitle h2 {
+    margin-bottom: 0;
+    padding-left: 1rem;
+    color: #07402B;
+}
+
+
+/* BOOK A COACH */
+
 .coachBox {
     display: flex;
     flex-direction: row;
@@ -124,48 +159,7 @@ html, body {
 
 
 
-/* .loginContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-.loginContainer img {
-    width: 500px;
-    height: auto;
-}
-
-.loginBox {
-    height: auto;
-    background-color: #07402B;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-.loginBox img {
-    width: 500px;
-    height: auto;
-}
-
-.card {
-    max-width: 500px;
-    width: 100%;
-    background-color: #07402B;
-    padding: 2rem;
-    border: 8px solid #f9f9f9;
-    border-radius: 30px;
-}
-
-.card h1 {
-    color: #f9f9f9;
-}
-
-.card label {
-    color: #f9f9f9;
-    margin-top: 2rem;
-    font-size: 1.4rem;
-} */
+/* LOGIN AND SIGNUP */
 
 body .loginSignupGrid {
     background-color: #07402B;
@@ -202,7 +196,6 @@ body .loginSignupGrid {
     margin: 2rem 0;
 }
 
-
 .loginSignupOption a {
     margin: 0 1.2rem;
     border: 2px solid #f9f9f9;
@@ -215,39 +208,89 @@ body .loginSignupGrid {
 }
 
 
-.bentoTitle {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 1rem;
-}
 
-.bentoTitle img {
-    width: 50px;
-    height: auto;
-    filter: invert(21%) sepia(63%) saturate(543%) hue-rotate(90deg) brightness(85%) contrast(91%);
-}
+/* BOOK COACHING PAGE */
 
-.bentoTitle h2 {
-    margin-bottom: 0;
-    padding-left: 1rem;
-    color: #07402B;
-}
-
-
-.introBox {
-    max-width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.bookCoach {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 80vh;
+    gap: 2rem;
     margin-top: 2rem;
-    font-size: 1.4rem;
-    /* font-weight: 500; */
-    color: #07402B;
+    margin-bottom: 2rem;
+}
+
+.initialCoach {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
 
 }
 
+.nutritionCoach {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.fitnessCoach {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.recoveryCoach {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.coachTag {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.initialCoach:hover, .nutritionCoach:hover, .fitnessCoach:hover, .recoveryCoach:hover {
+    background-color: #f9f9f9;
+    transform: scale(1.03);
+}
+
+
+
+
+
+
+/* RESPONSIVE DESIGN */
 
 @media screen and (max-width: 1048px) {
     .dashboardGrid {
