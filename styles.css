@@ -390,6 +390,25 @@ body .loginSignupGrid {
 }
 
 
+/* ALL COACH APPOINTEMTNS */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow: auto;
+}
+
+td, th {
+    border: 1px solid #999797;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+
 
 /* RESPONSIVE DESIGN */
 
