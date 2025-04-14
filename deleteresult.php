@@ -7,11 +7,11 @@
     $connection = mysqli_connect($server,$username,$password,$database);
     if(!$connection){
         die(mysqli_connect_error());
-    }
+    }    
 
-    $currentDate = date('Y-m-d');
+    $appointmentID = mysqli_real_escape_string($connection, $_POST['delete']);
 
-    $userID = $_COOKIE['id'];
+    setcookie('appointmentID', $appointmentID, strtotime("+1 year"), "/");
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment Overview | Core Athletics
+    <title>Delete an Appointment | Core Athletics
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -78,123 +78,18 @@
 
 <main>
 
-<section class="appointmentTable">
+<section class="appointmentDetails">
 
-<div class="introBox">
-    <?php 
-    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+<div class="container">
+    <h1 class="mb-5">Confirm Appointment Deletion</h1>
 
-    $sql = mysqli_query($connection, $query);
+    <?php
 
-    while($row = mysqli_fetch_array($sql)) {
+        $appointmentID = $_POST['delete'];
 
-        $firstName = $row['firstName'];
-    }
-                
-    echo "<p><strong class'bold'>Appointment Overview</strong></p>";
-    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
-    ?>
-</div>
-
-<div>
-    <h1>Your Appointments</h1>
-    <p>All your upcoming appointment details.</p>
-</div>
-
-    <table>
-            <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Appointment Type</th>
-                <th>Coach</th>
-                <th>Notes</th>
-            </tr>
-
-            <?php 
-            
-            $query = "SELECT bookingDate,bookingTime,bookingType,trainerID,bookingNotes FROM appointment WHERE userID='$userID' ORDER BY bookingDate asc";
-
-            $sql = mysqli_query($connection, $query);
-
-            while($row = mysqli_fetch_array($sql)) {
-
-                $bookingDate = strtotime($row['bookingDate']);
-                $bookingDate = date('l F j, Y', $bookingDate);
-
-                $bookingTime = $row['bookingTime'];
-
-                $bookingType = $row['bookingType'];
-
-                $trainerID = $row['trainerID'];
-
-                $bookingNotes = $row['bookingNotes'];
-
-                echo "<tr>";
-                    echo "<td>" . $bookingDate . "</td>"; 
-
-                    echo "<td>";
-                        if ($bookingTime == 1) {
-                            echo "9AM - 9:45AM";
-                        } else if ($bookingTime == 2) {
-                            echo "10AM - 10:45AM";
-                        } else if ($bookingTime == 3) {
-                            echo "11AM - 11:45AM";
-                        } else if ($bookingTime == 4) {
-                            echo "12PM - 12:45PM";
-                        } else if ($bookingTime == 5) {
-                            echo "1PM - 1:45PM";
-                        } else if ($bookingTime == 6) {
-                            echo "2PM - 2:45PM";
-                        } else if ($bookingTime == 7) {
-                            echo "3PM - 3:45PM";
-                        } else {
-                            echo "4PM - 4:45PM";
-                        }
-                    echo "</td>"; 
-
-                    echo "<td>";
-                        if ($bookingType == 1) {
-                            echo "Initial Consultation";
-                        } else if ($bookingType == 2) {
-                            echo "Nutrition Coaching";
-                        } else if ($bookingType == 3) {
-                            echo "Fitness Coaching";
-                        } else {
-                            echo "Recovery Coaching";
-                        }
-                    echo "</td>"; 
-
-                    echo "<td>Julie Baker</td>";
-
-                    echo "<td>" . $bookingNotes . "</td>";
-
-                echo "</tr>";
-
-            }
-            
-            ?>
-
-        </table>
-
-</section>
-
-<section class="delete my-5">
-    <h2>Manage your appointments?</h2>
-
-    <form action="deleteresult.php" method="POST">
-        
-        <div class="deleteBox">
-            <label for="delete" class="form-label">Please choose the appointment you would like to delete.</label>
-                <select name="delete" id="delete" class="form-select" required>
-                <option value="" disabled selected>Select your appointment:</option>
-
-                <?php 
-                
-                $query1 = "SELECT * FROM appointment WHERE userID='$userID' ORDER BY bookingDate asc";
+        $query1 = "SELECT * FROM appointment WHERE appointmentID = '$appointmentID'";
 
                 $sql1 = mysqli_query($connection,$query1);
-
-
 
                 while ($row1 = mysqli_fetch_array($sql1)) {
 
@@ -235,20 +130,23 @@
 
                     $appointmentID = $row1['appointmentID'];
 
-                    echo "<option value='" . $appointmentID . "'>" . $bookingDate . " | " . $bookingTimeText . " | " . $bookingTypeText . "</option>"; 
+                    echo "<p><span class='bold'>Date:</span> " . $bookingDate . "</p>";
+
+                    echo "<p><span class='bold'>Time:</span> " . $bookingTimeText . "</p>";
+
+
+                    echo "<p><span class='bold'>Appointment Type:</span> " . $bookingTypeText . "</p>";
+
+                    echo "<p><span class='bold'>Coach:</span> Julie Baker</p>";
+
                 }
 
                 ?>
-            </select>
 
-            <input type="submit" value="Delete this appointment" class="btn btn-danger btn-lg btn-block my-4">
-
-        </form>
-
-        </div>
+                <a href="deleteconfirm.php" class="btn btn-danger btn-lg btn-block my-4">Confirm Deletion</a>
+</div>
 
 </section>
-
 </main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
@@ -266,6 +164,7 @@
             </div>
             </div>
         </footer>
-        
+    
+
 </body>
 </html>
