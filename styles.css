@@ -362,6 +362,86 @@ tr:nth-child(odd) {
 }
 
 
+/* Nutrition Page Overview */
+
+.nutritionBox {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.barChart {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+canvas {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+}
+
+.statOne {
+    grid-column: 1/2;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.statTwo {
+    grid-column: 2/3;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.statThree {
+    grid-column: 3/4;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.statFour {
+    grid-column: 4/5;
+    background-color: #f9f9f9;
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.statCard {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.statCard h3 {
+    font-size: 1.4rem;
+}
+
+.statCard p {
+    font-size: 3rem;
+}
+
+.overText {
+    font-size: 1rem !important;
+}
+
 
 /* RESPONSIVE DESIGN */
 
@@ -372,6 +452,34 @@ tr:nth-child(odd) {
     }
 }
 
+@media screen and (max-width: 1296px) {
+    .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    .statOne {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    .statTwo {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+
+    .statThree {
+        grid-column: 1/2;
+        grid-row: 2/3;
+    }
+
+    .statFour {
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+}
+
 @media screen and (max-width: 1416px) {
     .coachBox {
         display: flex;
@@ -379,6 +487,13 @@ tr:nth-child(odd) {
     }
     .left {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 665px) {
+    .stats {
+        display: flex;
+        flex-direction: column;
     }
 }
     
