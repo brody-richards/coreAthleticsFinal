@@ -9,6 +9,8 @@
         die(mysqli_connect_error());
     }
 
+    $currentDate = date('Y-m-d');
+
     $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
     $sql = mysqli_query($connection, $query);
@@ -36,11 +38,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -78,16 +81,31 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
-<div class="container">
+<main>
 
-    <h1>Personal</h1>
+<div class="introBox">
+    <?php 
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+
+    $sql = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_array($sql)) {
+
+        $firstName = $row['firstName'];
+    }
+                
+    echo "<p><strong class'bold'>Personal Goals</strong></p>";
+    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    ?>
+</div>
+
+<div class="profileBox">
+    <h1>Your Goals</h1>
     <p>Update Your Personal Goals.</p>
 
     <form action="goalsresult.php" method="POST">
@@ -95,31 +113,32 @@
     <label for="calorieGoal" class="form-label">Change Daily Calorie Goal:</label>
     <div class="input-group">
         <div class="input-group-text">Calories</div>
-        <input type="number" id="calorieGoal" name="calorieGoal" step="1" min="0" class="form-control">
+        <input type="number" id="calorieGoal" name="calorieGoal" step="1" min="0" class="form-control" required value="<?php echo $calorieGoal ?>">
     </div>
-        <?php echo "<p>Current Calorie Goal: " . $calorieGoal ." cal/day</p>";?>
+        <?php echo "<p><strong class='bold'>Current Calorie Goal: </strong>" . $calorieGoal ." cal/day</p>";?>
 
     <label for="currentWeight" class="form-label">Set Your Current Weight:</label>
     <div class="input-group">
         <div class="input-group-text">lbs</div>
-        <input type="number" id="currentWeight" name="currentWeight" step="1" min="0" class="form-control">
+        <input type="number" id="currentWeight" name="currentWeight" step="1" min="0" class="form-control" required value="<?php echo $currentWeight ?>">
     </div>
-        <?php echo "<p>Current Weight: " . $currentWeight ." lbs.</p>";?>
+        <?php echo "<p><strong class='bold'>Current Weight: </strong>" . $currentWeight ." lbs.</p>";?>
 
     <label for="currentWeight" class="form-label">Set Your Goal Weight:</label>
     <div class="input-group">
         <div class="input-group-text">lbs</div>
-        <input type="number" id="goalWeight" name="goalWeight" step="1" min="0" class="form-control">
+        <input type="number" id="goalWeight" name="goalWeight" step="1" min="0" class="form-control" required value="<?php echo $goalWeight ?>">
     </div>
-    <?php echo "<p>Goal Weight: " . $goalWeight ." lbs.</p>";?>
+    <?php echo "<p><strong class='bold'>Current Goal Weight: </strong>" . $goalWeight ." lbs.</p>";?>
 
     <div class="personalButton">
-        <input type="submit" value="Save Personal Information">
+        <input type="submit" value="Save Personal Information" class="btn btn-dark btn-lg btn-block" style="background-color: #0d7a52">
     </div>
 
     </form>
 </div>
 
+</main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">

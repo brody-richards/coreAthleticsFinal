@@ -9,17 +9,7 @@
         die(mysqli_connect_error());
     }
 
-    // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //     $calorieGoal = $_POST['calorieGoal'];
-    //     $currentWeight = $_POST['currentWeight'];
-    //     $goalWeight = $_POST['goalWeight'];
-
-    // setcookie('calorieGoal',$calorieGoal,strtotime("+1 year"),"/");
-    // setcookie('currentWeight',$currentWeight,strtotime("+1 year"),"/");
-    // setcookie('goalWeight',$goalWeight,strtotime("+1 year"),"/");
-
-    // header("Location: goalsresult.php");
-    // exit();
+    $currentDate = date('Y-m-d');
 
     $calorieGoal = mysqli_real_escape_string($connection, $_POST['calorieGoal']);
     
@@ -47,11 +37,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -89,28 +80,46 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
-<h1>Personal</h1>
-<p>Your changes.</p>
+<main>
 
-<?php 
-    echo "<p>Your new calorie goal is " . $_POST['calorieGoal']."</p>";
+<div class="introBox">
+    <?php 
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
-    echo "<p>Your new current weight is " . $_POST['currentWeight']."</p>";
+    $sql = mysqli_query($connection, $query);
 
-    echo "<p>Your new goal weight is " . $_POST['goalWeight']."</p>";
-?>
+    while($row = mysqli_fetch_array($sql)) {
 
-<a href="index.php">View My Dashboard</a>
+        $firstName = $row['firstName'];
+    }
+                
+    echo "<p><strong class'bold'>Updated Goals</strong></p>";
+    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    ?>
+</div>
+
+<div class="profileBox">
+    <h1>Your Changed Goals</h1>
+    <p>Verify the following information.</p>
+
+    <?php 
+        echo "<p><strong class='bold'>Your new calorie goal is: </strong>" . $_POST['calorieGoal'] . " cal/day</p>";
+
+        echo "<p><strong class='bold'>Your new current weight is: </strong>" . $_POST['currentWeight'] . " lbs.</p>";
+
+        echo "<p><strong class='bold'>Your new goal weight is: </strong>" . $_POST['goalWeight'] . " lbs.</p>";
+    ?>
+
+    <a href="index.php" class="btn btn-dark btn-lg btn-block" style="background-color: #0d7a52">View My Dashboard</a>
 
 </div>
 
+</main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">

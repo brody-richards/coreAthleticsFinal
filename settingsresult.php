@@ -8,27 +8,27 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
-    
+
+
     $currentDate = date('Y-m-d');
 
-    $query12 = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+    // $email = mysqli_real_escape_string($connection, $_POST['email']);
+    
+    $firstName = mysqli_real_escape_string($connection, $_POST['firstName']);
+    
+    $lastName = mysqli_real_escape_string($connection, $_POST['lastName']);
 
-    $sql12 = mysqli_query($connection, $query12);
+    $birthday = mysqli_real_escape_string($connection, $_POST['birthday']);
+    
+    $gender = mysqli_real_escape_string($connection, $_POST['gender']);
 
-    while($row5 = mysqli_fetch_array($sql12)) {
-        
-        $email = $row5['email'];
+    $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-        $firstName = $row5['firstName'];
-
-        $lastName = $row5['lastName'];
-
-        $birthday = $row5['birthday'];
-
-        $gender = $row5['gender'];
-
-        $password = $row5['password'];
-    }
+    $id = $_COOKIE['id'];
+    
+    $query10 = "UPDATE athleteProfile SET firstName='$firstName', lastName='$lastName', birthday='$birthday', gender='$gender', password='$password' WHERE id='$id'";
+    
+    $sql10 = mysqli_query($connection, $query10);
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +36,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition | Core Athletics
-    </title>
+    <title>Settings Result | Core Athletics</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
@@ -106,84 +105,30 @@
         $firstName = $row['firstName'];
     }
                 
-    echo "<p><strong class'bold'>Personal Information</strong></p>";
+    echo "<p><strong class'bold'>Updated Goals</strong></p>";
     echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
     ?>
 </div>
-    
+
 <div class="profileBox">
-    <h1>Personal Profile Settings</h1>
-    <p>Update your personal information.</p>
+    <h1>Your Changed Settings</h1>
+    <p>Verify the following information.</p>
 
-    <form action="settingsresult.php" method="POST">
+    <?php 
+        echo "<p><strong class='bold'>Your First Name: </strong>" . $_POST['firstName'] . "</p>";
 
-    <!-- <label for="email" class="form-label">Change Email:</label>
-    <div class="input-group">
-        <input type="number" id="email" name="email" class="form-control">
-    </div> -->
-        <?php echo "<p><strong class='bold'>Current Email: </strong>" . $email ."</p>";?>
+        echo "<p><strong class='bold'>Your Last Name: </strong>" . $_POST['lastName'] . "</p>";
 
-    <label for="firstName" class="form-label">Change First Name:</label>
-    <div class="input-group">
-        <input type="text" id="firstName" name="firstName" class="form-control">
-    </div>
-        <?php echo "<p><strong class='bold'>Current First name: </strong>" . $firstName ."</p>";?>
+        echo "<p><strong class='bold'>Your Birthday: </strong>" . $_POST['birthday'] . "</p>";
 
-        <label for="lastName" class="form-label">Change Last Name:</label>
-    <div class="input-group">
-        <input type="text" id="lastName" name="lastName" class="form-control">
-    </div>
-        <?php echo "<p><strong class='bold'>Current Last name: </strong>" . $lastName ."</p>";?>
+        echo "<p><strong class='bold'>Your Gender: </strong>" . $_POST['gender'] . "</p>";
 
-        <label for="birthday" class="form-label">Change Birthday:</label>
-    <div class="input-group">
-        <input type="date" id="birthday" name="birthday" class="form-control">
-    </div>
-        <?php echo "<p><strong class='bold'>Current Birthday: </strong>" . $birthday ."</p>";?>
+        echo "<p><strong class='bold'>Your Password: </strong>" . $_POST['password'] . "</p>";
+    ?>
 
-        <label for="gender" class="form-label">Change Gender:</label>
-            <select name="gender" id="gender" class="form-select">
-                    <option value="" disabled selected>Select a gender:</option>
-                    <option value="man">Male</option>
-                    <option value="woman">Female</option>
-            </select>
-        <?php echo "<p><strong class='bold'>Current Gender: </strong>" . $gender ."</p>";?>
+    <a href="index.php" class="btn btn-dark btn-lg btn-block" style="background-color: #0d7a52">View My Dashboard</a>
 
-        <!-- <div class="formElement">
-                <div class="cardioWorkout">
-                        <label for="gender" class="form-label">Gender:</label>
-                            <select name="gender" id="gender" class="form-select">
-                                <option value="" disabled selected>Select a gender:</option>
-                                <option value="man">Male</option>
-                                <option value="woman">Female</option>
-                            </select>
-                </div>
-            </div> -->
-
-
-
-
-        <label for="password" class="form-label">Change Password:</label>
-    <div class="input-group">
-        <input type="text" id="password" name="password" class="form-control">
-    </div>
-        <?php echo "<p><strong class='bold'>Current Password: </strong>" . $password ."</p>";?>
-        
-
-    <div class="personalButton">
-        <input type="submit" value="Save Personal Information" class="btn btn-dark btn-lg btn-block" style="background-color: #0d7a52">
-    </div>
-
-    </form>
 </div>
-
-    <!-- echo "<p><strong class='bold'>Email: </strong>" . $email . "</p>";
-    echo "<p><strong class='bold'>First Name: </strong>" . $firstName . "</p>";
-    echo "<p><strong class='bold'>Last Name: </strong>" . $lastName . "</p>";
-    echo "<p><strong class='bold'>Birthday: </strong>" . $birthday . "</p>";
-    echo "<p><strong class='bold'>Gender: </strong>" . $gender . "</p>";
-    echo "<p><strong class='bold'>Password: </strong>" . $password . "</p>"; -->
-    
 
 </main>
 

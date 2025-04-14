@@ -172,63 +172,6 @@ main {
 }
 
 
-
-/* BOOK A COACH - INDIVIDUAL COACHES */
-
-/* .section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f9f9f9;
-    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
-    border: solid #f9f9f9 1px;
-    border-radius: 20px;
-    padding: 2rem;
-}
-
-.coachingBox {
-    display: flex;
-    gap: 2rem;
-    border: 2px solid black;
-} */
-
-/* section {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-}
-
-.coachingBox {
-    display: flex;
-    flex-direction: row;
-    background-color: #f9f9f9;
-    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
-    border: solid #f9f9f9 1px;
-    border-radius: 20px;
-    padding: 2rem;
-    gap: 2rem;
-}
-
-.coachingBoxLeft {
-
-}
-
-.coachingBoxRight {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.coachingBoxRightBorder {
-    border: 2px solid #07402B;
-    padding: 2rem;
-    border-radius: 20px;
-} */
-
-
 /* LOGIN AND SIGNUP */
 
 body .loginSignupGrid {
@@ -406,6 +349,16 @@ td, th {
 
 tr:nth-child(odd) {
     background-color: #dddddd;
+}
+
+
+/* Personal Page */
+
+.profileBox {
+    box-shadow:   rgba(7, 64, 43, 0.9) 0px 6px 12px 0px, rgba(0, 0, 0, 0.3) 0px 3px 7px -2px;
+    border: solid #f9f9f9 1px;
+    border-radius: 20px;
+    padding: 2rem;
 }
 
 
