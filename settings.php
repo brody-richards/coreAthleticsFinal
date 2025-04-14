@@ -125,47 +125,33 @@
 
     <label for="firstName" class="form-label">Change First Name:</label>
     <div class="input-group">
-        <input type="text" id="firstName" name="firstName" class="form-control">
+        <input type="text" id="firstName" name="firstName" class="form-control" required value="<?php echo $firstName ?>">
     </div>
         <?php echo "<p><strong class='bold'>Current First name: </strong>" . $firstName ."</p>";?>
 
         <label for="lastName" class="form-label">Change Last Name:</label>
     <div class="input-group">
-        <input type="text" id="lastName" name="lastName" class="form-control">
+        <input type="text" id="lastName" name="lastName" class="form-control" required value="<?php echo $lastName ?>">
     </div>
         <?php echo "<p><strong class='bold'>Current Last name: </strong>" . $lastName ."</p>";?>
 
         <label for="birthday" class="form-label">Change Birthday:</label>
     <div class="input-group">
-        <input type="date" id="birthday" name="birthday" class="form-control">
+        <input type="date" id="birthday" name="birthday" class="form-control" required value="<?php echo $birthday ?>">
     </div>
         <?php echo "<p><strong class='bold'>Current Birthday: </strong>" . $birthday ."</p>";?>
 
         <label for="gender" class="form-label">Change Gender:</label>
-            <select name="gender" id="gender" class="form-select">
-                    <option value="" disabled selected>Select a gender:</option>
+            <select name="gender" id="gender" class="form-select" required value="<?php echo $gender ?>">
+                    <option value="" disabled>Select a gender:</option>
                     <option value="man">Male</option>
                     <option value="woman">Female</option>
             </select>
         <?php echo "<p><strong class='bold'>Current Gender: </strong>" . $gender ."</p>";?>
 
-        <!-- <div class="formElement">
-                <div class="cardioWorkout">
-                        <label for="gender" class="form-label">Gender:</label>
-                            <select name="gender" id="gender" class="form-select">
-                                <option value="" disabled selected>Select a gender:</option>
-                                <option value="man">Male</option>
-                                <option value="woman">Female</option>
-                            </select>
-                </div>
-            </div> -->
-
-
-
-
         <label for="password" class="form-label">Change Password:</label>
     <div class="input-group">
-        <input type="text" id="password" name="password" class="form-control">
+        <input type="text" id="password" name="password" class="form-control" required value="<?php echo $password ?>">
     </div>
         <?php echo "<p><strong class='bold'>Current Password: </strong>" . $password ."</p>";?>
         
