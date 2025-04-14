@@ -185,7 +185,7 @@
         
         <div class="deleteBox">
             <label for="delete" class="form-label">Please choose the appointment you would like to delete.</label>
-                <select name="delete" id="delete" class="form-select" required>
+                <select name="delete" id="delete" class="form-select delete" required onchange="enableSubmit()">
                 <option value="" disabled selected>Select your appointment:</option>
 
                 <?php 
@@ -241,7 +241,7 @@
                 ?>
             </select>
 
-            <input type="submit" value="Delete this appointment" class="btn btn-danger btn-lg btn-block my-4">
+            <input type="submit" value="Delete this appointment" class="btn btn-danger btn-lg btn-block my-4" id="deleteButton" disabled>
 
         </form>
 
@@ -269,3 +269,18 @@
         
 </body>
 </html>
+
+<script>
+
+    function enableSubmit() {
+        let selected = document.getElementById('delete');
+        let button = document.getElementById('deleteButton');
+
+        if (selected && selected.value !== ""){
+            button.disabled = false;
+        } else {
+            button.disabled = true;
+        }
+    }
+
+</script>
