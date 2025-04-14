@@ -163,14 +163,6 @@
     </form>
 </div>
 
-    <!-- echo "<p><strong class='bold'>Email: </strong>" . $email . "</p>";
-    echo "<p><strong class='bold'>First Name: </strong>" . $firstName . "</p>";
-    echo "<p><strong class='bold'>Last Name: </strong>" . $lastName . "</p>";
-    echo "<p><strong class='bold'>Birthday: </strong>" . $birthday . "</p>";
-    echo "<p><strong class='bold'>Gender: </strong>" . $gender . "</p>";
-    echo "<p><strong class='bold'>Password: </strong>" . $password . "</p>"; -->
-    
-
 </main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">

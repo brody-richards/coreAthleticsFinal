@@ -8,6 +8,7 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    $currentDate = date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +25,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -66,45 +68,60 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
+<main>
 
+<div class="introBox">
+    <?php 
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
-<div class="container">
+    $sql = mysqli_query($connection, $query);
 
+    while($row = mysqli_fetch_array($sql)) {
+
+        $firstName = $row['firstName'];
+    }
+                
+    echo "<p><strong class'bold'>Add a Meal</strong></p>";
+    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    ?>
+</div>
+
+<div class="nutritionBox">
     <h1>Nutrition</h1>
     <p>Add a meal for the day.</p>
 
     <form action="nutritionresult.php" method="POST">
 
-    <label for="carbs" class="form-label">Total Carbs:</label>
+    <label for="carbs" class="form-label my-2">Total Carbs:</label>
     <div class="input-group">
         <div class="input-group-text">Grams</div>
-        <input type="number" id="carbs" name="carbs" step="1" min="0" class="form-control">
+        <input type="number" id="carbs" name="carbs" step="1" min="0" class="form-control" required>
     </div>
 
-    <label for="fats" class="form-label">Total Fats:</label>
+    <label for="fats" class="form-label my-2">Total Fats:</label>
     <div class="input-group">
         <div class="input-group-text">Grams</div>
-        <input type="number" id="fats" name="fats" step="1" min="0" class="form-control">
+        <input type="number" id="fats" name="fats" step="1" min="0" class="form-control" required>
     </div>
 
-    <label for="protein" class="form-label">Total Protein:</label>
+    <label for="protein" class="form-label my-2">Total Protein:</label>
     <div class="input-group">
         <div class="input-group-text">Grams</div>
-        <input type="number" id="protein" name="protein" step="1" min="0" class="form-control">
+        <input type="number" id="protein" name="protein" step="1" min="0" class="form-control" required>
     </div>
 
-    <input type="submit" label="Submit Meal Entry">
+    <input type="submit" value="Submit Meal Entry" class="btn btn-dark btn-lg btn-block my-3" style="background-color: #0d7a52">
 
 </form>
 
 </div>
+
+</main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
