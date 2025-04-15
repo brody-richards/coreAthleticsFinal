@@ -10,6 +10,8 @@
     }
 
     date_default_timezone_set('America/Edmonton');
+
+    $currentDate = date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +27,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -67,14 +70,32 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
-<h1>Fitness</h1>
+
+<main>
+
+<div class="introBox">
+    <?php 
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+
+    $sql = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_array($sql)) {
+
+        $firstName = $row['firstName'];
+    }
+                
+    echo "<p><strong class'bold'>Workout Log Result</strong></p>";
+    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    ?>
+</div>
+
+<div class="fitnessBox">
+<h1>Workout Log Result</h1>
 
 
 <?php 
@@ -108,9 +129,9 @@
     }
 ?>
 
-    <a href="index.php">View My Dashboard</a>
-
-
+    <a href="fitnessoverview.php" class="btn btn-dark btn-lg btn-block my-3" style="background-color: #0d7a52">View Fitness Overview</a>
+    </div>
+</main>
     
     <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">

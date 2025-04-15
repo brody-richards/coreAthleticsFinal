@@ -8,6 +8,8 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+
+    $currentDate = date('Y-m-d');
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrition | Core Athletics
+    <title>Fitness Overview | Core Athletics
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -24,11 +26,12 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
+        <div class="container">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php" class="nav-link" aria-current="dashboard page">Dashboard</a>
                 </li>
@@ -66,34 +69,394 @@
                 </li>
             </ul>
             <div class="buttons">
-                <a href="login.php" class="btn btn-light">Login</a>
-                <a href="signup.php" class="btn btn-outline-light">Sign Up</a>
-            </div>
+                <a href="logout.php" class="btn btn-light">Logout</a>
         </div>
     </nav>
 </header>
 
-<div class="container">
-    <h1>Fitness Overview.</h1>
-    <p>Information on fitness.</p>
+
+<main>
+
+<div class="introBox">
+    <?php 
+    $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+
+    $sql = mysqli_query($connection, $query);
+
+    while($row = mysqli_fetch_array($sql)) {
+
+        $firstName = $row['firstName'];
+    }
+                
+    echo "<p><strong class'bold'>Fitness Overview</strong></p>";
+    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    ?>
 </div>
+
+<div class="fitnessBox">
+    <h1>Fitness Overview.</h1>
+    <p>Information on fitness progress.</p>
+
+
+    <div class="barChart">
+        <canvas id="fitnessChart"></canvas>
+
+        <div class="statsFitness my-3">
+
+            <div class="fStatOne">
+
+                <?php 
+                
+                $query4 = "SELECT 
+                workouts.strengthType, 
+                workouts.strengthTime,
+                workouts.userID,
+                workouts.date,
+                workoutType.id, 
+                workoutType.name 
+                FROM workouts 
+                INNER JOIN workoutType ON workouts.strengthType = workoutType.id 
+                WHERE workouts.userID = '" . $_COOKIE['id'] . "' AND workouts.date = '$currentDate'";
+
+                $sql4 = mysqli_query($connection, $query4);
+
+                while($row4 = mysqli_fetch_array($sql4)) {
+
+                    $strengthType = $row4['name'];
+
+                    $strengthTime = $row4['strengthTime'];
+                }
+
+                if (isset($strengthType) && isset($strengthTime)) {
+                    echo '<div class="statCard">';
+                        echo '<h3 class="bold">Recent Strength Workout</h3>';
+                        echo '<p>' . $strengthType . '</p>';
+                    echo '</div>';
+                } else {
+                    echo '<h3 class="bold">Recent Strength Workout</h3>';
+                    echo "<p>Today's Strength workout has not been logged.</p>";
+                }
+
+                ?>
+            </div>
+
+            <div class="fStatTwo">
+                
+                <?php 
+                    
+                    $query5 = "SELECT
+                        workouts.cardioType, 
+                        workouts.cardioTime,
+                        workouts.userID,
+                        workouts.date,
+                        workoutType.id, 
+                        workoutType.name
+                        FROM workouts
+                        INNER JOIN workoutType ON workouts.cardioType = workoutType.id WHERE workouts.userID = '" . $_COOKIE['id'] . "' AND workouts.date = '$currentDate'";
+
+                        $sql5 = mysqli_query($connection, $query5);
+
+                        while ($row5 = mysqli_fetch_array($sql5)) {
+                            
+                            $cardioType = $row5['name'];
+
+                            $cardioTime = $row5['cardioTime'];
+                            
+                        }
+
+                        if (isset($cardioType) && isset($cardioTime)) {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Recent Cardio Workout</h3>';
+                                echo '<p>' . $cardioType . '</p>';
+                            echo '</div>';
+                        } else {
+                            echo '<h3 class="bold">Recent Cardio Workout</h3>';
+                            echo "<p>Today's Cardio workout has not been logged.</p>";
+                        }
+                    
+                    ?>
+            </div>
+
+            <div class="fStatThree">
+                    <?php 
+                    
+                    if (isset($cardioTime) && isset($strengthTime)) {
+
+                        $totalMinutes = $strengthTime + $cardioTime;
+        
+                        $totalHours = floor($totalMinutes / 60);
+                        $remainingMinutes = $totalMinutes % 60;
+        
+                        if ($totalMinutes < 59) {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Total Workout Time</h3>';
+                                echo '<p>' . $totalMinutes . ' minutes</p>';
+                            echo '</div>';
+                        } else if ($totalMinutes % 60 == 0) {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Total Workout Time</h3>';
+                                echo '<p>' . $totalHours . ' hour</p>';
+                            echo '</div>';
+                        }
+                        else {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Total Workout Time</h3>';
+                                echo '<p>' . $totalHours . ' hours ' . $remainingMinutes.' minutes</p>';
+                            echo '</div>';
+                        }
+        
+                } else {
+                    echo "<h3 class='bold'>Total Workout Time</h3>";
+                    echo "<p>Please log today's workout to see your breakdown.</p>";
+                }
+                    ?>
+            </div>
+
+            <div class="fStatFour">
+                    <?php
+                        $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+        
+                        $sql = mysqli_query($connection, $query);
+                    
+                        while($row = mysqli_fetch_array($sql)) {
+                    
+                            $gender = $row['gender'];
+        
+                            $currentWeight = $row['currentWeight'];
+                        }
     
+                        if (isset($cardioTime) && isset($strengthTime)) {
+
+                            $totalMinutes = $strengthTime + $cardioTime;
+            
+                         // ----------------------- strength calculations
+        
+                        // 125 and BELOW
+                        if ($currentWeight <= 125 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 3.5*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        } 
+                        else if ($currentWeight <= 125 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 2.7*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 126 - 155
+                        else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 4.1*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 3.3*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 156 - 185
+                        else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 5.2*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 4.5*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 186 - 215
+                        else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 6.5*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 5.8*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 216 and UP
+                        else if ($currentWeight >= 216 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 7.8*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 216 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Strength Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedStrength = 7.0*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo "<h3 class='bold'>Estimated Calories Burned from Strength Training</h3>";
+                        echo "<p>Please log today's workout to see your breakdown.</p>";
+                    }
+                    ?>
+            </div>
+
+            <div class="fStatFive">
+                    <?php 
+                    
+                    if (isset($cardioTime) && isset($strengthTime)) {
+
+                        $totalMinutes = $strengthTime + $cardioTime;
+        
+                        // cardio calculations
+        
+                        // 125 and BELOW
+                        if ($currentWeight <= 125 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 6.0*$totalMinutes) . ' calories</p>';
+                            echo '</div>';
+                        } 
+                        else if ($currentWeight <= 125 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 4.5*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 126 - 155
+                        else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 7.1*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 126 && $currentWeight <= 155 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 5.3*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 156 - 185
+                        else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 9.0*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 156 && $currentWeight <= 185 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 7.0*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 186 - 215
+                        else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 11.0*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 186 && $currentWeight <= 215 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 8.6*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+        
+                        // 216 and UP
+                        else if ($currentWeight >= 216 && $gender == 'man') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 13.0*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                        else if ($currentWeight >= 216 && $gender == 'woman') {
+                            echo '<div class="statCard">';
+                                echo '<h3 class="bold">Estimated Calories Burned from Cardio Training</h3>';
+                                echo '<p>' . ($totalCaloriesBurnedCardio = 10.3*$totalMinutes) .' calories</p>';
+                            echo '</div>';
+                        }
+                    
+                } else {
+                    echo "<h3 class='bold'>Estimated Calories Burned from Strength Training</h3>";
+                    echo "<p>Please log today's workout to see your breakdown.</p>";
+                }
+                    ?>
+            </div>
+
+            <div class="fStatSix">
+                    <?php 
+
+                    if (isset($totalCaloriesBurnedStrength) && isset($totalCaloriesBurnedCardio)) {
+                    echo '<div class="statCard">';
+                        echo '<h3 class="bold">Estimated Total Calories Burned</h3>';
+                        echo '<p>' . ($totalCaloriesBurnedStrength + $totalCaloriesBurnedCardio) . ' calories</p>';
+                    echo '</div>';
+                    } else {
+                        echo "<h3 class='bold'>Estimated Total Calories Burned</h3>";
+                        echo "<p>Please log today's workout to see your breakdown.</p>";
+                    }
+                    ?>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
+    <div class="container">
+        <div class="name">
+            <p>Core Athletics</p>
+        </div>
 
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer>
+        <div class="footerlinks">
+            <a href="index.php">Dashboard</a>
+            <a href="coachoverview.php">Coaching</a>
+            <a href="settings.php">Profile</a>
+            <a href="nutritionoverview.php">Nutrition</a>
+            <a href="fitnessoverview.php">Fitness</a>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('fitnessChart');
+
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Est Total Calories Burned','Est Calories Burned From Cardio Workout', 'Est Calories Burned From Strength Workout'],
+        datasets: [{
+        label: 'Calories Burned',
+        data: [<?php echo ($totalCaloriesBurnedStrength + $totalCaloriesBurnedCardio) ?>,<?php echo $totalCaloriesBurnedCardio ?>,<?php echo $totalCaloriesBurnedStrength ?>],
+        borderWidth: 1,
+        backgroundColor: '#0d7a52',
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+</script>
 
 </body>
 </html>
