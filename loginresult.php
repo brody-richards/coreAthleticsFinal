@@ -24,7 +24,6 @@
     if ($row) {
     $id = $row['id'];
     setcookie('id', $id, strtotime("+1 year"), "/");
-    echo "<p>success</p>";
     }
 ?>
 

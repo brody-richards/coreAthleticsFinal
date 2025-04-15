@@ -44,77 +44,57 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
+
         <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
         </div>
     </nav>
 </header>
 
-<div class="container">
-<h1>All Information.</h1>
-<p>Verify the following information.</p>
+<main>
+    <div class="signUpBox my-5">
+        <h1>All Personal Information.</h1>
+        <p>Verify the following information.</p>
 
-<?php 
+        <?php 
 
-    $query12 = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
+            $query12 = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
-    $sql12 = mysqli_query($connection, $query12);
+            $sql12 = mysqli_query($connection, $query12);
 
-    while($row5 = mysqli_fetch_array($sql12)) {
-        
-        $email = $row5['email'];
+            while($row5 = mysqli_fetch_array($sql12)) {
+                
+                $email = $row5['email'];
 
-        $firstName = $row5['firstName'];
+                $firstName = $row5['firstName'];
 
-        $lastName = $row5['lastName'];
+                $lastName = $row5['lastName'];
 
-        $birthday = $row5['birthday'];
+                $birthday = $row5['birthday'];
 
-        $gender = $row5['gender'];
+                $gender = $row5['gender'];
 
-        $password = $row5['password'];
-    }
+                $password = $row5['password'];
+            }
 
-    echo "<p>Email: " . $email . "</p>";
-    echo "<p>First Name: " . $firstName . "</p>";
-    echo "<p>Last Name: " . $lastName . "</p>";
-    echo "<p>Birthday: " . $birthday . "</p>";
-    echo "<p>Gender: " . $gender . "</p>";
-    echo "<p>Password: " . $password . "</p>";
+            echo "<p><strong class='bold'>Email: </strong>" . $email . "</p>";
+            echo "<p><strong class='bold'>First Name: </strong>" . $firstName . "</p>";
+            echo "<p><strong class='bold'>Last Name: </strong>" . $lastName . "</p>";
+            echo "<p><strong class='bold'>Birthday: </strong>" . $birthday . "</p>";
+            echo "<p><strong class='bold'>Gender: </strong>" . $gender . "</p>";
+            echo "<p><strong class='bold'>Password: </strong>" . $password . "</p>";
 
-    echo "<p>Daily Calorie Goal: " . $calorieGoal . "</p>";
-    echo "<p>Current Weight: " . $currentWeight . "</p>";
-    echo "<p>Goal Weight: " . $goalWeight . "</p>";
+            echo "<p><strong class='bold'>Daily Calorie Goal: </strong>" . $calorieGoal . "</p>";
+            echo "<p><strong class='bold'>Current Weight: </strong>" . $currentWeight . "</p>";
+            echo "<p><strong class='bold'>Goal Weight: </strong>" . $goalWeight . "</p>";
 
+        ?>
 
-    // if (isset($_COOKIE['calorieGoal'])) {
-    //     echo "<p>Your new calorie goal is " . $_COOKIE['calorieGoal']."</p>";
-    // } else {
-    //     echo "<p>Your calorie goal remains the same.</p>";
-    // }
-
-    // if (isset($_COOKIE['currentWeight'])) {
-    //     echo "<p>Your new current weight is " . $_COOKIE['currentWeight']."</p>";
-    // } else {
-    //     echo "<p>Your weight remains the same.</p>";
-    // }
-
-    // if (isset($_COOKIE['goalWeight'])) {
-    //     echo "<p>Your new goal weight is " . $_COOKIE['goalWeight']."</p>";
-    // } else {
-    //     echo "<p>Your goal weight remains the same.</p>";
-    // }
-
-
-
-?>
-
-<a href="index.php">View My Dashboard</a>
-</div>
-</div>
-
+        <a href="index.php" class="btn btn-dark btn-lg btn-block my-3" style="background-color: #0d7a52">View My Dashboard</a>
+        </div>
+    </div>
+</main>
 
 <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">

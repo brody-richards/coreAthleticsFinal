@@ -23,57 +23,6 @@
 </head>
 <body>
 
-<!-- 
-<div class="container">
-
-    <h1>Sign Up</h1>
-    <p>Add the following personal information.</p>
-
-    <form action="signupresult.php" method="POST">
-
-        <label for="email" class="form-label">Email:</label>
-        <div class="input-group">
-            <input type="text" id="email" name="email" class="form-control">
-        </div>
-
-        <label for="firstName" class="form-label">First Name:</label>
-        <div class="input-group">
-            <input type="text" id="firstName" name="firstName" class="form-control">
-        </div>
-
-        <label for="lastName" class="form-label">Last Name:</label>
-        <div class="input-group">
-            <input type="text" id="lastName" name="lastName" class="form-control">
-        </div>
-
-        <label for="birthday" class="form-label">Birthday:</label>
-        <div class="input-group">
-            <input type="date" id="birthday" name="birthday" class="form-control">
-        </div>
-
-        <div class="cardioWorkout">
-                <label for="gender" class="form-label">Gender:</label>
-                    <select name="gender" id="gender" class="form-select">
-                    <option value="" disabled selected>Select a gender:</option>
-                    <option value="man">Male</option>
-                    <option value="woman">Female</option>
-                </select>
-        </div>
-
-        <label for="password" class="form-label">Password:</label>
-        <div class="input-group">
-            <input type="text" id="password" name="password" class="form-control">
-        </div>
-
-        <input type="submit" label="Sign Up">
-
-    </form>
-
-<a href="login.php">Login</a>
-
-</div> -->
-
-
 <div class="loginSignupGrid">
     <div class="loginSignupLeft">
         <img class="card-img-top" src="img/mainLogoGreen.svg" alt="Card image cap">
@@ -88,35 +37,35 @@
             <div class="formElement">
                 <label for="email" class="form-label">Email:</label>
                 <div class="input-group">
-                    <input type="text" id="email" name="email" class="form-control">
+                    <input type="text" id="email" name="email" class="form-control" required>
                 </div>
             </div>
 
             <div class="formElement">
                 <label for="firstName" class="form-label">First Name:</label>
                 <div class="input-group">
-                    <input type="text" id="firstName" name="firstName" class="form-control">
+                    <input type="text" id="firstName" name="firstName" class="form-control" required>
                 </div>
             </div>
 
             <div class="formElement">
                 <label for="lastName" class="form-label">Last Name:</label>
                 <div class="input-group">
-                    <input type="text" id="lastName" name="lastName" class="form-control">
+                    <input type="text" id="lastName" name="lastName" class="form-control" required>
                 </div>
             </div>
 
             <div class="formElement">
                 <label for="birthday" class="form-label">Birthday:</label>
                 <div class="input-group">
-                    <input type="date" id="birthday" name="birthday" class="form-control">
+                    <input type="date" id="birthday" name="birthday" class="form-control" required>
                 </div>
             </div>
 
             <div class="formElement">
                 <div class="cardioWorkout">
                         <label for="gender" class="form-label">Gender:</label>
-                            <select name="gender" id="gender" class="form-select">
+                            <select name="gender" id="gender" class="form-select" required>
                             <option value="" disabled selected>Select a gender:</option>
                             <option value="man">Male</option>
                             <option value="woman">Female</option>
@@ -127,7 +76,7 @@
             <div class="formElement">
                 <label for="password" class="form-label">Password:</label>
                 <div class="input-group">
-                    <input type="text" id="password" name="password" class="form-control">
+                    <input type="text" id="password" name="password" class="form-control" required>
                 </div>
             </div>
 
