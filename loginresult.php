@@ -21,9 +21,11 @@
 
     $row = mysqli_fetch_array($sql11);
 
+    if ($row) {
     $id = $row['id'];
-
     setcookie('id', $id, strtotime("+1 year"), "/");
+    echo "<p>success</p>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -40,43 +42,31 @@
 <body>
 
 <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
+<nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
+
         <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
+            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+        </div>
     </nav>
 </header>
 
-<div class="container">
-    <?php
-        if ($row >= 1) {
-            echo "<h1>Login Successful</h1>"; 
-            echo "<a href='index.php'>Go to your dashboard</a>";
-        } else {
-            echo "<h1>Login Failed.</h1>";
-            echo "<a href='login.php'>Try again?</a>";
-        }
-    ?>
 
-</div>
+<main>
 
+    <div class="loginBox my-5">
+        <?php
+            if ($row >= 1) {
+                echo "<h1>Login Successful</h1>"; 
+                echo "<a href='index.php' class='btn btn-dark btn-lg btn-block my-3' style='background-color: #0d7a52'>Go to your dashboard</a>";
+            } else {
+                echo "<h1>Login Failed.</h1>";
+                echo "<a href='login.php' class='btn btn-warning my-3'>Try again?</a>";
+            }
+        ?>
 
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
+    </div>
 
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer>
-    
+</main>    
 
 </body>
 </html>

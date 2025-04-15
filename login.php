@@ -23,71 +23,6 @@
 </head>
 <body>
 
-<!-- <header>
-<nav class="navbar navbar-expand bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">Core Athletics</a>
-            <ul class="navbar-nav">
-        </div>
-    </nav>
-</header> -->
-
-<!-- <div class="container">
-    <div class="loginContainer">
-        <img src="img/mainLogoGreen.svg" alt="main logo">
-        <h1>Login</h1>
-        <p>Add your account information.</p>
-
-        <form action="loginresult.php" method="POST">
-
-        <label for="email" class="form-label">Email:</label>
-        <div class="input-group">
-            <input type="text" id="email" name="email" class="form-control">
-        </div>
-
-        <label for="password" class="form-label">Password:</label>
-        <div class="input-group">
-            <input type="text" id="password" name="password" class="form-control">
-        </div>
-
-        <input type="submit" label="Login">
-    </form>
-
-        <a href="signup.php">Sign Up</a>
-    </div>
-</div> -->
-
-<!-- <div class="container-fluid loginBox d-flex justify-content-center align-items-center">
-    <div class="card">
-        <div class="mainLogo d-flex justify-content-center">
-            <img class="card-img-top" src="img/mainLogoGreen.svg" alt="Card image cap">
-        </div>
-        <div class="card-body">
-            <h1 class="card-title">Login</h1>
-
-            <form action="loginresult.php" method="POST">
-
-                <label for="email" class="form-label">Email:</label>
-                <div class="input-group">
-                    <input type="text" id="email" name="email" class="form-control">
-                </div>
-
-                <label for="password" class="form-label">Password:</label>
-                <div class="input-group">
-                    <input type="text" id="password" name="password" class="form-control">
-                </div>
-
-                <input type="submit" value="Login" class="btn btn-light btn-lg mt-4">
-            </form>
-
-            <div class="signUpOption">
-                <p>No account? <a href="signup.php" class="btn btn-outline-light pr-2">Sign Up</a></p>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
 <div class="loginSignupGrid">
     <div class="loginSignupLeft">
         <img class="card-img-top" src="img/mainLogoGreen.svg" alt="Card image cap">
@@ -101,14 +36,14 @@
         <div class="formElement">
             <label for="email" class="form-label">Email:</label>
             <div class="input-group">
-                <input type="text" id="email" name="email" class="form-control">
+                <input type="text" id="email" name="email" class="form-control" required>
             </div>
         </div>
 
         <div>
             <label for="password" class="form-label">Password:</label>
             <div class="input-group">
-                <input type="password" id="password" name="password" class="form-control">
+                <input type="password" id="password" name="password" class="form-control" required>
             </div>
         </div>
 
@@ -120,23 +55,6 @@
         </div>
     </div>
 </div>
-
-<!-- <footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
-
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer> -->
-    
 
 </body>
 </html>
