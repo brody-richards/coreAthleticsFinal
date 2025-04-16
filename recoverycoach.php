@@ -8,6 +8,7 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    date_default_timezone_set('America/Edmonton');
     $tomorrow = date('Y-m-d', strtotime('+1 day'));
 
     $bookingType = 4;

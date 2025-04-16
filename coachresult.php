@@ -8,6 +8,7 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    date_default_timezone_set('America/Edmonton');
 
     $bookingTime = mysqli_real_escape_string($connection, $_POST['time']);
     $bookingNotes = mysqli_real_escape_string($connection, $_POST['notes']);

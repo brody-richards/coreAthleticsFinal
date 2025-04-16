@@ -8,6 +8,7 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    date_default_timezone_set('America/Edmonton');
     
     foreach ($_COOKIE as $key => $value) {
         setcookie($key, '', time() - 3600, "/");

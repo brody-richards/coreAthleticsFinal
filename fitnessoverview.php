@@ -8,8 +8,9 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
-
+    date_default_timezone_set('America/Edmonton');
     $currentDate = date('Y-m-d');
+
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +107,6 @@
             <div class="fStatOne">
 
                 <?php 
-                
                 $query4 = "SELECT 
                 workouts.strengthType, 
                 workouts.strengthTime,
@@ -125,6 +125,7 @@
                     $strengthType = $row4['name'];
 
                     $strengthTime = $row4['strengthTime'];
+
                 }
 
                 if (isset($strengthType) && isset($strengthTime)) {
@@ -136,7 +137,6 @@
                     echo '<h3 class="bold">Recent Strength Workout</h3>';
                     echo "<p>Today's Strength workout has not been logged.</p>";
                 }
-
                 ?>
             </div>
 

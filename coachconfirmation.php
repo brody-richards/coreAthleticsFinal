@@ -7,7 +7,8 @@
     $connection = mysqli_connect($server,$username,$password,$database);
     if(!$connection){
         die(mysqli_connect_error());
-    }    
+    }
+    date_default_timezone_set('America/Edmonton');
 ?>
 
 <!DOCTYPE html>

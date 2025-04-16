@@ -8,6 +8,7 @@
     if(!$connection){
         die(mysqli_connect_error());
     }
+    date_default_timezone_set('America/Edmonton');
 
     // add signup information to db
     $email = mysqli_real_escape_string($connection, $_POST['email']);
