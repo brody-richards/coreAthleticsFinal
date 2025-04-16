@@ -14,16 +14,29 @@
 
     $password = mysqli_real_escape_string($connection, $_POST['password']);
 
-
     $query11 = "SELECT * FROM athleteProfile WHERE email = '$email' and password = '$password'";
 
     $sql11 = mysqli_query($connection, $query11);
 
     $row = mysqli_fetch_array($sql11);
 
+    // if ($row) {
+    // $id = $row['id'];
+    // setcookie('id', $id, strtotime("+1 year"), "/");
+    // }
+
     if ($row) {
-    $id = $row['id'];
-    setcookie('id', $id, strtotime("+1 year"), "/");
+        $id = $row['id'];
+
+        if (($email === 'admin@gmail.com' && $password === 'pw')) {
+            setcookie('id', $id, strtotime("+1 year"), "/");
+            header('Location: adminpage.php');
+            exit;
+        } else {
+            setcookie('id', $id, strtotime("+1 year"), "/");
+            // header('Location: loginresult.php');
+            // exit;
+        }
     }
 ?>
 
