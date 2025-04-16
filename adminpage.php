@@ -144,8 +144,8 @@
         </table>
 
 
-        <section class="delete my-5">
-    <h2>Manage your appointments?</h2>
+<section class="delete my-5">
+    <h2>Delete an Appointment.</h2>
 
     <form action="admindeleteresult.php" method="POST">
         
@@ -219,6 +219,24 @@
 
 </section>
 
+<section class="add">
+
+    <h2>Add an Appointment.</h2>
+
+    <form action="admincheckcoach.php" method="POST">
+        <div class="coachFormDate">
+            <label for="date" class="form-label my-2">Please choose the date for the appointment you would like to add.</label>
+            <input type="date" class="form-control" id="date" name="date" min="<?php echo $currentDate ?>" required onchange="enableSubmit()">
+        </div>
+
+        <div class="coachFormButton">
+            <input type="submit" label="Book Time" id="addButton" class="btn btn-dark btn-lg btn-block my-3" style="background-color: #0d7a52" disabled>
+        </div>
+    </form>
+
+
+</section>
+
 </main>
         
 </body>
@@ -229,11 +247,19 @@
     function enableSubmit() {
         let selected = document.getElementById('delete');
         let button = document.getElementById('deleteButton');
+        let dateSelected = document.getElementById('date');
+        let addButton = document.getElementById('addButton');
 
         if (selected && selected.value !== ""){
             button.disabled = false;
         } else {
             button.disabled = true;
+        }
+
+        if (dateSelected && dateSelected.value !== ""){
+            addButton.disabled = false;
+        } else {
+            addButton.disabled = true;
         }
     }
 
