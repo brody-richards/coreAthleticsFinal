@@ -24,12 +24,15 @@
 </head>
 <body>
 
+<div class="loginSignupWrapper">
+<main>
+
 <div class="loginSignupGrid">
     <div class="loginSignupLeft">
         <img class="card-img-top" src="img/mainLogoGreen.svg" alt="Card image cap">
     </div>
 
-    <div class="loginSignupRight">
+    <div class="loginSignupRight my-4">
         <h1>Sign Up</h1>
         <p>Add the following personal information.</p>
 
@@ -89,7 +92,9 @@
         </div>
     </div>
 </div>
-    
+
+</main>
+</div>
 
 </body>
 </html>

@@ -24,12 +24,14 @@
 </head>
 <body>
 
+<div class="loginSignupWrapper">
+<main>
 <div class="loginSignupGrid">
     <div class="loginSignupLeft">
         <img class="card-img-top" src="img/mainLogoGreen.svg" alt="Card image cap">
     </div>
 
-    <div class="loginSignupRight">
+    <div class="loginSignupRight my-4">
         <h1 class="card-title">Login</h1>
 
         <form action="loginresult.php" method="POST">
@@ -55,6 +57,8 @@
             <p>No account? <a href="signup.php" class="btn btn-outline-light pr-2">Sign Up</a></p>
         </div>
     </div>
+</div>
+</main>
 </div>
 
 </body>
