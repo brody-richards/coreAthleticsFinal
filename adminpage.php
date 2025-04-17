@@ -64,6 +64,7 @@
     <p>All your upcoming coaching appointment details.</p>
 </div>
 
+<div class="tableBox">
     <table>
             <tr>
                 <th>Date</th>
@@ -142,7 +143,7 @@
             ?>
 
         </table>
-
+    </div>
 
 <section class="delete my-5">
     <h2>Delete an Appointment.</h2>

@@ -102,6 +102,7 @@
     <p>All your upcoming appointment details.</p>
 </div>
 
+<div class="tableBox">
     <table>
             <tr>
                 <th>Date</th>
@@ -176,6 +177,7 @@
             ?>
 
         </table>
+    </div>
 
 </section>
 

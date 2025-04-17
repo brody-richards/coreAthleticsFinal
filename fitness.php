@@ -99,7 +99,7 @@
         
         <div class="strengthWorkout">
             <label for="stengthType" class="form-label my-2">Select a Strength workout:</label>
-                <select name="strengthType" id="strengthType" class="form-select">
+                <select name="strengthType" id="strengthType" class="form-select" required>
                 <option value="" disabled selected>Select a workout:</option>
 
                 <?php 
@@ -117,13 +117,13 @@
         </div>
 
         <div class="strengthTime">
-            <label for="strengthTime" class="form-label my-2">Add Estimated Strength Workout Time:</label>
-            <input type="number" name="strengthTime" id="strengthTime" step="1" min="0" class="form-control">
+            <label for="strengthTime" class="form-label my-2">Add Estimated Strength Workout Time (minutes):</label>
+            <input type="number" name="strengthTime" id="strengthTime" step="1" min="0" class="form-control"  required>
         </div>
 
         <div class="cardioWorkout">
             <label for="cardioType" class="form-label my-2">Select a Cardio workout:</label>
-                <select name="cardioType" id="cardioType" class="form-select">
+                <select name="cardioType" id="cardioType" class="form-select" required>
                 <option value="" disabled selected>Select a workout:</option>
 
                 <?php 
@@ -141,8 +141,8 @@
         </div>
 
         <div class="cardioTime">
-            <label for="cardioTime" class="form-label my-2">Add Estimated Cardio Workout Time:</label>
-            <input type="number" name="cardioTime" id="cardioTime" step="1" min="0" class="form-control">
+            <label for="cardioTime" class="form-label my-2">Add Estimated Cardio Workout Time (minutes):</label>
+            <input type="number" name="cardioTime" id="cardioTime" step="1" min="0" class="form-control" required>
         </div>
 
         <input type="submit" value="Submit Workout Entry" class="btn btn-dark btn-lg btn-block my-3" style="background-color: #0d7a52">

@@ -137,10 +137,12 @@
 
 
         <div class="cardTwo">
+
             <div class="bentoTitle">
                 <img src="img/nutrition.png" alt="nutrition icon">
                 <h2>Nutrition</h2>
             </div>
+
     <?php 
             $query = "SELECT * FROM athleteProfile WHERE id = '" . $_COOKIE['id'] . "'";
 
@@ -202,9 +204,11 @@
 
             ?>
 
-            <!-- <div class="pieChart">
-                <canvas id="myChart"></canvas>
-            </div> -->
+            <div class="pieChart">
+                <div class="barWrapper">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
         
         </div>
 
@@ -521,6 +525,7 @@ data: {
     }]
 },
 options: {
+    responsive: true,
     scales: {
     y: {
         beginAtZero: true

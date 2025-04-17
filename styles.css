@@ -78,7 +78,7 @@ footer {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     height: 80vh;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
@@ -126,11 +126,6 @@ footer {
 .bold {
     font-weight: 600;
     color: #07402B;
-}
-
-.pieChart {
-    width: 12rem;
-    height: auto;
 }
 
 .bentoTitle {
@@ -374,7 +369,7 @@ body .loginSignupGrid {
 table {
     border-collapse: collapse;
     width: 100%;
-    overflow: auto;
+    min-width: 100%;
 }
 
 td, th {
@@ -387,6 +382,10 @@ tr:nth-child(odd) {
     background-color: #dddddd;
 }
 
+.tableBox {
+    width: 100%;
+    overflow-x: auto;
+}
 
 /* Personal Page */
 
@@ -408,13 +407,26 @@ tr:nth-child(odd) {
 
 .barChart {
     width: 100%;
-    height: auto;
+    height: 100%;
     position: relative;
+}
+
+.pieChart {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.barWrapper {
+    width: 100%;
+    max-width: 10rem;
+    height: auto;
 }
 
 canvas {
     max-width: 100% !important;
     height: auto !important;
+    display: block;
 }
 
 .stats {
@@ -471,7 +483,7 @@ canvas {
 }
 
 .statCard p {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .overText {
@@ -484,8 +496,12 @@ canvas {
 .statsFitness {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 10rem;
     gap: 1rem;
+}
+
+.statsFitness p {
+    font-size: 1.2rem;
 }
 
 .fStatOne {
@@ -588,6 +604,13 @@ canvas {
     }
 }
 
+@media screen and (max-width: 1150px) {
+    .statsFitness {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 1048px) {
     .dashboardGrid {
         display: flex;
@@ -595,6 +618,11 @@ canvas {
         height: 100%;
     }
     header .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bookCoach {
         display: flex;
         flex-direction: column;
     }
