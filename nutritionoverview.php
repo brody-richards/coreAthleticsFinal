@@ -201,20 +201,24 @@
     
 </main>
 
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-    <div class="container">
-        <div class="name">
-            <p>Core Athletics</p>
-        </div>
-
-        <div class="footerlinks">
-            <a href="index.php">Dashboard</a>
-            <a href="coachoverview.php">Coaching</a>
-            <a href="settings.php">Profile</a>
-            <a href="nutritionoverview.php">Nutrition</a>
-            <a href="fitnessoverview.php">Fitness</a>
-        </div>
+<footer>
+<div class="footerFlex">
+    <div class="footerLeft">
+        <img src="img/mail.png" alt="" width="50">
+        <p>core@athletics.com</p>
     </div>
+
+    <div class="footerMiddle">
+        <img src="img/Facebook_Logo_Secondary.png" alt="" width="50">
+        <img src="img/Instagram_Glyph_White.png" alt="" width="50">
+        <img src="img/InBug-White.png" alt="" width="50">
+    </div>
+
+    <div class="footerRight">
+        <p>Privacy Policy</p>
+        <p>Terms & Conditions</p>
+    </div>
+</div>
 </footer>
 
 
