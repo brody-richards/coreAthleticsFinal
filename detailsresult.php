@@ -10,8 +10,6 @@
     }
     date_default_timezone_set('America/Edmonton');
 
-        // add
-        
         $calorieGoal = mysqli_real_escape_string($connection, $_POST['calorieGoal']);
     
         $currentWeight = mysqli_real_escape_string($connection, $_POST['currentWeight']);
@@ -23,13 +21,6 @@
         $query10 = "UPDATE athleteProfile SET calorieGoal='$calorieGoal', currentWeight='$currentWeight', goalWeight='$goalWeight' WHERE id='$id'";
         
         $sql10 = mysqli_query($connection, $query10);
-
-        // setcookie('calorieGoal',$calorieGoal,strtotime("+1 year"),"/");
-        // setcookie('currentWeight',$currentWeight,strtotime("+1 year"),"/");
-        // setcookie('goalWeight',$goalWeight,strtotime("+1 year"),"/");
-
-        // header("Location: detailsresult.php");
-        // exit();
 ?>
 
 <!DOCTYPE html>
