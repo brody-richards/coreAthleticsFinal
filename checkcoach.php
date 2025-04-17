@@ -14,7 +14,6 @@
 
     setcookie('bookingDate', $bookingDate, strtotime("+1 year"), "/");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

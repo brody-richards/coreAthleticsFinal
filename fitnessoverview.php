@@ -89,8 +89,8 @@
         $firstName = $row['firstName'];
     }
                 
-    echo "<p><strong class'bold'>Fitness Overview</strong></p>";
-    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    echo "<p><strong class='bold'>Fitness Overview</strong></p>";
+    echo "<p><strong class='bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
     ?>
 </div>
 

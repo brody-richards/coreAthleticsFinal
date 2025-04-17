@@ -28,7 +28,7 @@
 <nav class="navbar navbar-expand border-bottom border-body" style="background-color: #07402B;" data-bs-theme="dark">
 
         <div class="container">
-            <img src="img/logoText.svg" alt="main logo in navbar" lass="navbar-brand" width="200" height="50">
+            <img src="img/logoText.svg" alt="main logo in navbar" class="navbar-brand" width="200" height="50">
 
             <div class="buttons">
                 <a href="logout.php" class="btn btn-light">Logout</a>
@@ -76,23 +76,6 @@
 
 </section>
 </main>
-
-<footer class="bg-dark text-white text-center py-3 mt-auto">
-        <div class="container">
-            <div class="name">
-                <p>Core Athletics</p>
-            </div>
-
-            <div class="footerlinks">
-                <a href="index.php">Dashboard</a>
-                <a href="coachoverview.php">Coaching</a>
-                <a href="settings.php">Profile</a>
-                <a href="nutritionoverview.php">Nutrition</a>
-                <a href="fitnessoverview.php">Fitness</a>
-            </div>
-            </div>
-        </footer>
-    
 
 </body>
 </html>

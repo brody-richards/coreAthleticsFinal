@@ -80,11 +80,7 @@
 <section class="appointmentDetails">
 
 <div class="container">
-    <!-- <h1 class="mb-5">Your appointment has been deleted.</h1>
-    <p>Reschedule at a different time?</p>
-    <a href="bookcoach.php">Book another appointment</a> -->
-
-
+    
     <?php 
     
     $query = "DELETE FROM appointment WHERE appointmentID = '$appointmentID'";

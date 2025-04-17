@@ -91,8 +91,8 @@
         $firstName = $row['firstName'];
     }
                 
-    echo "<p><strong class'bold'>Appointment Overview</strong></p>";
-    echo "<p><strong class'bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
+    echo "<p><strong class='bold'>Appointment Overview</strong></p>";
+    echo "<p><strong class='bold'>Today's Date: </strong>" . date('F j, Y', strtotime($currentDate)) . "</p>";
     ?>
 </div>
 
@@ -272,9 +272,6 @@
     </div>
 </div>
 </footer>
-        
-</body>
-</html>
 
 <script>
 
@@ -290,3 +287,6 @@
     }
 
 </script>
+
+</body>
+</html>

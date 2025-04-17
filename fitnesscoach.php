@@ -14,7 +14,6 @@
     $bookingType = 3;
     setcookie('bookingType', $bookingType, strtotime("+1 year"), "/");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,7 +123,7 @@
                                 </div>
 
                                 <div class="coachFormButton">
-                                    <input type="submit" class="btn btn-light btn-lg btn-block" label="Book Time" id="submitButton">
+                                    <input type="submit" class="btn btn-light btn-lg btn-block" value="Book Time" id="submitButton">
                                 </div>
                             </form>
                     </div>
@@ -155,10 +154,6 @@
     </div>
 </div>
 </footer>
-    
-
-</body>
-</html>
 
 <script>
 
@@ -177,3 +172,6 @@ dateSelection.addEventListener('input', () => {
     });
 
 </script>
+
+</body>
+</html>

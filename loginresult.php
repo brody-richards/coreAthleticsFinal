@@ -21,11 +21,6 @@
 
     $row = mysqli_fetch_array($sql11);
 
-    // if ($row) {
-    // $id = $row['id'];
-    // setcookie('id', $id, strtotime("+1 year"), "/");
-    // }
-
     if ($row) {
         $id = $row['id'];
 
@@ -35,8 +30,6 @@
             exit;
         } else {
             setcookie('id', $id, strtotime("+1 year"), "/");
-            // header('Location: loginresult.php');
-            // exit;
         }
     }
 ?>
